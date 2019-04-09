@@ -17,4 +17,11 @@
         android:layout_height="wrap_content"
         android:text="进入下一个Activity"
         />
+
+    <Button
+        android:id="@+id/btn_gothird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="进入333333333个Activity"
+        />
 </LinearLayout>

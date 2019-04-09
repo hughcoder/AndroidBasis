@@ -34,3 +34,32 @@ onPause、onStop ---- 是否位于前台这个角度
 
 
 任务栈 ：  1、前台任务栈  2、后台任务栈
+
+
+## IPC机制 binder理一理
+
+### 1.多进程
+
+```java
+     <activity android:name=".SecondActivity"
+            android:label="@string/app_name"
+            android:process=":remote"
+            />
+        <activity android:name=".ThirdActivity"
+            android:label="@string/app_name"
+            android:process=":com.hugh.remote"
+            />
+
+```
+u0_a522   14878 762   1763400 62220 SyS_epoll_ 0000000000 S com.hugh.basis
+u0_a522   15247 762   1760024 57208 SyS_epoll_ 0000000000 S com.hugh.basis:remote
+u0_a522   15273 762   1775416 51876 SyS_epoll_ 0000000000 S com.hugh.basis:com.hugh.remote
+进程名以 ':'开头的进程属于当前应用的私有进程
+
+### 2.Parcelable  和  Serializable
+
+区别 ：         平台  、开销  、使用 、效率 、维护
+
+Serializable   java    大     简单  低   难       ------>需要考虑serialID 去序列化和反序列化
+
+Parcelable     android  小    麻烦  高   简单

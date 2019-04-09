@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.hugh.basis.binder.UserManager;
+
 /**
  * Created by {chenyouwei}
  * Date: {2019/4/8}
@@ -16,6 +18,7 @@ import android.widget.Button;
 public class SecondActivity extends Activity {
 
     private Button button;
+    private Button buttongo3;
 
     public static String TAG= SecondActivity.class.getSimpleName();
 
@@ -60,12 +63,23 @@ public class SecondActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG,"onCreate");
+        Log.e(TAG,"uUserID " + UserManager.uUserId);
         setContentView(R.layout.activity_second);
         button=findViewById(R.id.btn_second);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(SecondActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        buttongo3 = findViewById(R.id.btn_gothird);
+        buttongo3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(SecondActivity.this,ThirdActivity.class);
                 startActivity(intent);
             }
         });

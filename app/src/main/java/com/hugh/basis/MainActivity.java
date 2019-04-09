@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hugh.basis.binder.UserManager;
+
 public class MainActivity extends AppCompatActivity {
     private Button button;
     private TextView textView;
@@ -76,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG,"onCreate");
+        UserManager.uUserId = 2;
+
+        Log.e(TAG,"uUserID " +UserManager.uUserId);
 
         if(savedInstanceState !=null){
             String test = savedInstanceState.getString("extra_test");

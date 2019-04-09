@@ -63,3 +63,17 @@ u0_a522   15273 762   1775416 51876 SyS_epoll_ 0000000000 S com.hugh.basis:com.h
 Serializable   java    大     简单  低   难       ------>需要考虑serialID 去序列化和反序列化
 
 Parcelable     android  小    麻烦  高   简单
+
+
+## View 滑动相关
+
+```
+ 1.               button3.scrollBy(300,200);
+ 
+ 2.               ObjectAnimator.ofFloat(button3,"translationX",0,100).setDuration(500).start();
+ 
+ 3.               ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) button3.getLayoutParams();
+                params.width += 100;
+                params.leftMargin += 100;
+                button3.requestLayout();
+```

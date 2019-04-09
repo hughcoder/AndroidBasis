@@ -7,12 +7,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="第二个页面"
+        android:text="第33333333333个页面"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp" />
-
     <Button
-        android:id="@+id/btn_second"
+        android:id="@+id/btn_third"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="进入下一个Activity"

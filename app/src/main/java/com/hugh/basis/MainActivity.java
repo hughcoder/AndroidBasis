@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private Button button;
     private TextView textView;
+    private Button button2 ;
     public static String TAG = MainActivity.class.getSimpleName();
 
 
@@ -87,6 +88,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button2 = findViewById(R.id.btn_goself);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MainActivity.class);
                 startActivity(intent);
             }
         });

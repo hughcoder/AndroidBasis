@@ -1,23 +1,18 @@
 package com.hugh.basis;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 /**
  * Created by {chenyouwei}
  * Date: {2019/4/8}
  */
-public class SecondActivity extends Activity {
+public class ThirdActivity extends Activity {
 
-    private Button button;
-
-    public static String TAG= SecondActivity.class.getSimpleName();
+    public static String TAG= ThirdActivity.class.getSimpleName();
 
 
     @Override
@@ -60,15 +55,7 @@ public class SecondActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG,"onCreate");
-        setContentView(R.layout.activity_second);
-        button=findViewById(R.id.btn_second);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(SecondActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_third);
     }
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

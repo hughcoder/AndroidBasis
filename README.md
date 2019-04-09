@@ -6,9 +6,10 @@
 ### 1.生命周期
 
 第一个Activity
-                                     (正常情况走下一个Activity) -> 2onC ->2onStart->2onResume ->1onStop (这样确保能有一个在前台)
-onC - onStart - onResume   -> onPause
-                                     (异常情况横竖切换)->onSave->onstop->ondestroy->onCrete ->onRestrore->onStart->onResume
+
+onCreate - onStart - onResume   -> onPause
+-> 一、(正常情况走下一个Activity) -> 2onC ->2onStart->2onResume ->1onStop   ---- (这样确保能有一个在前台)
+-> 二、(异常情况横竖切换)->onSaveInstanceState->onstop->ondestroy->onCrete ->onRestroreState->onStart->onResume
 
 
 ### 2tip
@@ -22,3 +23,14 @@ onPause、onStop ---- 是否位于前台这个角度
 后台Activity ----已经被暂停的Activity,比如执行onStop
 
 ### 防止Activity在旋转时被重新创建  需要 orientation(旋转) || screenSize(防止被重新创建)
+
+## 启动模式
+
+1.standard
+2.singleTop
+3.singleTask   -- 单实例模式
+4.singleInstance
+
+
+
+任务栈 ：  1、前台任务栈  2、后台任务栈

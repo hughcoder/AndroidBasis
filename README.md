@@ -7,9 +7,9 @@
 
 第一个Activity
 
-onCreate - onStart - onResume   -> onPause
--> 一、(正常情况走下一个Activity) -> 2onC ->2onStart->2onResume ->1onStop   ---- (这样确保能有一个在前台)
--> 二、(异常情况横竖切换)->onSaveInstanceState->onstop->ondestroy->onCrete ->onRestroreState->onStart->onResume
+* onCreate - onStart - onResume   -> onPause
+* -> 一、(正常情况走下一个Activity) -> 2onC ->2onStart->2onResume ->1onStop   ---- (这样确保能有一个在前台)
+* -> 二、(异常情况横竖切换)->onSaveInstanceState->onstop->ondestroy->onCrete ->onRestroreState->onStart->onResume
 
 
 ### 2tip

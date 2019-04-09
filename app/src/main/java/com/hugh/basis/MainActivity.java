@@ -1,5 +1,7 @@
 package com.hugh.basis;
 
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -7,8 +9,13 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hugh.basis.binder.UserManager;
@@ -17,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private TextView textView;
     private Button button2 ;
+    private VelocityTracker mVelocityTracker;
+    private LinearLayout linearLayout;
+    private RelativeLayout button3;
     public static String TAG = MainActivity.class.getSimpleName();
 
 
@@ -74,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG,"onDestroy");
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.btn_goto);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +115,42 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        linearLayout = findViewById(R.id.ll_contain);
+
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+
+                        break;
+                }
+                return true;
+            }});
+
+        button3=findViewById(R.id.btn_View);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                button3.scrollBy(300,200);
+//                ObjectAnimator.ofFloat(button3,"translationX",0,100).setDuration(500).start();
+                ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) button3.getLayoutParams();
+                params.width += 100;
+                params.leftMargin += 100;
+                button3.requestLayout();
             }
         });
     }

@@ -85,3 +85,74 @@ Parcelable     android  小    麻烦  高   简单
                 params.leftMargin += 100;
                 button3.requestLayout();
 ```
+
+### View measure layout draw
+
+#### tips
+ 一. 因为View的measure过程和Activity的生命周期方法不是同步执行的，因此无法保证Activity执行了onCreate、onStart、onResume 时某个View已经测量
+ 完毕了，如果View还没有测量完毕，那么获得的宽高就是0，下面有4中方法来解决这个问题。
+ 
+ * 1 在Activity的 onWindowFocusChanged 里去获取
+ 
+ ```
+     @Override
+     public void onWindowFocusChanged(boolean hasFocus) {
+         super.onWindowFocusChanged(hasFocus);
+         if (hasFocus) {
+             int width = button.getMeasuredWidth();
+             int height = button.getMeasuredHeight();
+             Log.e("a", width + "");
+             Log.e("a", height + "");
+         }
+     }
+```
+
+ * 2 view.post(runnable)
+ 
+ ```
+      button.post(new Runnable() {
+            @Override
+            public void run() {
+                int width = button.getMeasuredWidth();
+                int height = button.getMeasuredHeight();
+                Log.e("b", width + "");
+                Log.e("b", height + "");
+            }
+        });
+```
+ 
+ * 3 ViewTreeObserver
+ 
+ ```
+    ViewTreeObserver observer = button.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                button.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int width = button.getMeasuredWidth();
+                int height = button.getMeasuredHeight();
+                Log.e("c", width + "");
+                Log.e("c", height + "");
+            }
+        });
+```
+
+* 4. 如果子View是 wrap-content 或者 具体数值的话
+
+具体的数值
+
+```
+       int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this,100), View.MeasureSpec.EXACTLY);
+        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this,100), View.MeasureSpec.EXACTLY);
+        button.measure(widthMeasureSpec, heightMeasureSpec);
+```
+ 
+ wrap-content
+ 
+ ```
+  //如果是wrapContent的话
+      //   makeMeasureSpec()  传入测量大小 ，测量模式
+         int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) -1, View.MeasureSpec.AT_MOST);
+         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) -1, View.MeasureSpec.AT_MOST);
+         button.measure(widthMeasureSpec, heightMeasureSpec);
+```

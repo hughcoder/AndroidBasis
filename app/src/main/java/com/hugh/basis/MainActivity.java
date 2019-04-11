@@ -3,6 +3,7 @@ package com.hugh.basis;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.PersistableBundle;
@@ -13,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -23,79 +25,130 @@ import com.hugh.basis.binder.UserManager;
 public class MainActivity extends AppCompatActivity {
     private Button button;
     private TextView textView;
-    private Button button2 ;
+    private Button button2;
     private VelocityTracker mVelocityTracker;
     private LinearLayout linearLayout;
     private RelativeLayout button3;
+    private View view;
     public static String TAG = MainActivity.class.getSimpleName();
 
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.e(TAG,"--- onSaveInstanceState");
-        outState.putString("extra_test","test");
+        Log.e(TAG, "--- onSaveInstanceState");
+        outState.putString("extra_test", "test");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Log.e(TAG,"onRestoreInstanceState");
-        Log.e("onRestoreInstanceState",savedInstanceState.toString());
+        Log.e(TAG, "onRestoreInstanceState");
+        Log.e("onRestoreInstanceState", savedInstanceState.toString());
         String test = savedInstanceState.getString("extra_test");
-        Log.e("onRestoreInstanceState"," test:"+test);
+        Log.e("onRestoreInstanceState", " test:" + test);
         //当Activity被重新创建后,onRestoreInstanceState会被调用
         //通过这个和onCreate方法来判断Activity是否被重建
     }
 
     @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            int width = button.getMeasuredWidth();
+            int height = button.getMeasuredHeight();
+            Log.e("a", width + "");
+            Log.e("a", height + "");
+        }
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
-        Log.e(TAG,"onStart");
+        Log.e(TAG, "onStart");
+        button.post(new Runnable() {
+            @Override
+            public void run() {
+                int width = button.getMeasuredWidth();
+                int height = button.getMeasuredHeight();
+                Log.e("b", width + "");
+                Log.e("b", height + "");
+            }
+        });
+
+        ViewTreeObserver observer = button.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                button.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int width = button.getMeasuredWidth();
+                int height = button.getMeasuredHeight();
+                Log.e("c", width + "");
+                Log.e("c", height + "");
+            }
+        });
+
+//      针对具体数值  如果相对应的View给出了具体dp就填入就行了
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this,100), View.MeasureSpec.EXACTLY);
+        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this,100), View.MeasureSpec.EXACTLY);
+        button.measure(widthMeasureSpec, heightMeasureSpec);
+
+        // 如果是wrapContent的话
+        //makeMeasureSpec()  传入测量大小 ，测量模式
+//        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) -1, View.MeasureSpec.AT_MOST);
+//        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) -1, View.MeasureSpec.AT_MOST);
+//        button.measure(widthMeasureSpec, heightMeasureSpec);
+        Log.e("d", button.getMeasuredHeight() + "");
+        Log.e("d", button.getMeasuredWidth() + "");
+    }
+
+    public static int dip2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG,"onResume");
+        Log.e(TAG, "onResume");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.e(TAG,"onRestart");
+        Log.e(TAG, "onRestart");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG,"onPause");
+        Log.e(TAG, "onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e(TAG,"onStop");
+        Log.e(TAG, "onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(TAG,"onDestroy");
+        Log.e(TAG, "onDestroy");
     }
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG,"onCreate");
+        Log.e(TAG, "onCreate");
         UserManager.uUserId = 2;
 
-        Log.e(TAG,"uUserID " +UserManager.uUserId);
+        Log.e(TAG, "uUserID " + UserManager.uUserId);
 
-        if(savedInstanceState !=null){
+        if (savedInstanceState != null) {
             String test = savedInstanceState.getString("extra_test");
-            Log.e(TAG,"test:"+test);
+            Log.e(TAG, "test:" + test);
         }
 
         setContentView(R.layout.activity_main);
@@ -104,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });
@@ -113,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -139,9 +192,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 return true;
-            }});
+            }
+        });
 
-        button3=findViewById(R.id.btn_View);
+        button3 = findViewById(R.id.btn_View);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,6 +212,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Log.e(TAG,"newConfig.orientation:"+newConfig.orientation);
+        Log.e(TAG, "newConfig.orientation:" + newConfig.orientation);
     }
 }

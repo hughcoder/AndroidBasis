@@ -19,8 +19,8 @@
 
     <Button
         android:id="@+id/btn_goto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:text="进入下一个Activity" />
 
     <Button

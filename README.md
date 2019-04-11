@@ -64,6 +64,14 @@ Serializable   java    大     简单  低   难       ------>需要考虑serial
 
 Parcelable     android  小    麻烦  高   简单
 
+### ICP跨进程的通信方式
+1. Bundle(实现Parcelable序列化)  ---只能传输Bundle支持的数据类型，适合四大组件之间的通信
+2. 文件读写（注意并发操作，不适合高并发操作）
+3.AIDL        -------多AIDL 对 一Service需要用到binder池，主要原理多开一个接口 queryBinder去返回不同的Binder对象，处理不同的操作方法
+4.Messanger(其实是对AIDL的封装)
+5.ContentProvider(四大组件之一 ，主要提供数据源的CRUD操作)  ---也可以用于一对多的进程通信
+6.socket（客户端与服务端监听同一端口） 适用网络数据交换
+
 
 ## View 滑动相关
 

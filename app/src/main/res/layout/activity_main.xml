@@ -33,17 +33,25 @@
         android:id="@+id/btn_View"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@color/colorPrimaryDark"
-        >
+        android:background="@color/colorPrimaryDark">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="View的滑动 相关"
             android:textColor="@color/colorPrimary"
             android:textSize="16dp" />
     </RelativeLayout>
+
+    <com.hugh.basis.View.CircleView
+        android:id="@+id/circleView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:layout_margin="20dp"
+        app:circle_color="@color/colorPrimaryDark"
+        android:padding="20dp" />
 </LinearLayout>

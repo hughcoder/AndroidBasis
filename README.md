@@ -347,3 +347,25 @@ View 绘制的过程是通过dispatchDraw来实现的，dispatchDraw会遍历调
 #### tips
 如果当前View不想绘制任何内容，可以使用 `setWillNotDraw` 来优化
 
+#### 自定义View 自定义ViewGroup 参考CircleView 和 HorizontalScrollView
+
+
+## 7Android动画相关
+
+Android动画分为3种
+1.View动画
+2.帧动画
+3.属性动画
+
+
+### 7.1 View动画
+
+* 平移动画
+* 缩放动画
+* 旋转动画
+* 透明度动画
+
+
+
+
+

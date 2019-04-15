@@ -21,7 +21,7 @@
         android:id="@+id/btn_goto"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="进入下一个Activity" />
+        android:text="进入动画相关Activity" />
 
     <Button
         android:id="@+id/btn_goself"

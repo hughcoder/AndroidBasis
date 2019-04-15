@@ -360,10 +360,70 @@ Android动画分为3种
 
 ### 7.1 View动画
 
-* 平移动画
-* 缩放动画
-* 旋转动画
-* 透明度动画
+* 平移动画   translate
+* 缩放动画   scale
+* 旋转动画   rotate
+* 透明度动画  alpha
+
+这点动画的过程其实就是矩阵变换的过程 
+
+
+```
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation_set);
+        mButton.startAnimation(animation);
+
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0,1);
+        alphaAnimation.setDuration(2000);
+        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                //这边可以对整个动画过程做监听
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        mButton.startAnimation(alphaAnimation);
+```
+
+
+### 7.2 帧动画
+帧动画是顺序播放一组预先定义好的图片,类似与电影播放。
+
+```
+// frame_animation
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item
+        android:drawable="@drawable/image1"
+        android:duration="500" />
+    <item
+        android:drawable="@drawable/image2"
+        android:duration="500" />
+
+    <item
+        android:drawable="@drawable/image3"
+        android:duration="500" />
+
+</animation-list>
+
+
+
+
+  mButton.setBackgroundResource(R.drawable.frame_animation);
+        AnimationDrawable drawable = (AnimationDrawable) mButton.getBackground();
+        drawable.start();
+```
+
 
 
 

@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
         // 如果是wrapContent的话
         //makeMeasureSpec()  传入测量大小 ，测量模式
-//        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) -1, View.MeasureSpec.AT_MOST);
-//        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) -1, View.MeasureSpec.AT_MOST);
+//        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((a << 30) -a, View.MeasureSpec.AT_MOST);
+//        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((a << 30) -a, View.MeasureSpec.AT_MOST);
 //        button.measure(widthMeasureSpec, heightMeasureSpec);
         Log.e("d", button.getMeasuredHeight() + "");
         Log.e("d", button.getMeasuredWidth() + "");
@@ -157,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, AnimationActivity.class);
                 startActivity(intent);
             }
         });

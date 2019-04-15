@@ -3,8 +3,8 @@
     package="com.hugh.basis">
 
     <application
-        android:allowBackup="true"
         android:name=".HughApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -13,24 +13,27 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
-            android:launchMode="standard"
-            >
+            android:launchMode="standard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity"
-            android:label="@string/app_name"
+        <activity
+            android:name=".SecondActivity"
             android:configChanges="screenLayout"
-            android:process=":remote"
-            />
-        <activity android:name=".ThirdActivity"
             android:label="@string/app_name"
-            android:process=":com.hugh.remote"
+            android:process=":remote" />
+        <activity
+            android:name=".ThirdActivity"
             android:configChanges="screenLayout"
-            />
+            android:label="@string/app_name"
+            android:process=":com.hugh.remote" />
+        <activity
+            android:name=".AnimationActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="standard" />
     </application>
 
 </manifest>

@@ -17,10 +17,13 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hugh.basis.binder.UserManager;
+
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
     private RelativeLayout button3;
     private View view;
+    private ListView listView;
     public static String TAG = MainActivity.class.getSimpleName();
 
 
@@ -208,6 +212,8 @@ public class MainActivity extends AppCompatActivity {
                 button3.requestLayout();
             }
         });
+
+//        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
     }
 
     @Override

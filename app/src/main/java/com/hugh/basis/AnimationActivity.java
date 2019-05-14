@@ -1,5 +1,6 @@
 package com.hugh.basis;
 
+import android.animation.ObjectAnimator;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -48,9 +49,23 @@ public class AnimationActivity extends AppCompatActivity {
 //        });
 //        mButton.startAnimation(alphaAnimation);
 
-        mButton.setBackgroundResource(R.drawable.frame_animation);
-        AnimationDrawable drawable = (AnimationDrawable) mButton.getBackground();
-        drawable.start();
+//        mButton.setBackgroundResource(R.drawable.frame_animation);
+//        AnimationDrawable drawable = (AnimationDrawable) mButton.getBackground();
+//        drawable.start();
 
+        ObjectAnimator.ofFloat(mButton, "translationY", 800).start();
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator.ofInt(mButton, "width", 500).setDuration(5000).start();
+            }
+        });
+
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        // overridePendingTransition();
     }
 }

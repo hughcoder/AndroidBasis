@@ -393,6 +393,27 @@ Android动画分为3种
         mButton.startAnimation(alphaAnimation);
 ```
 
+#### View 动画的使用场景
+
+1.LayoutAnimation
+作用与ViewGroup，为ViewGroup指定一个动画，这样当他的子元素出场时都会具有这种动画效果
+
+2.Activity的切换效果
+```
+//在Intent时进入 
+Intent intent = new Intent();
+startActivity(intent);
+overridePendingTransition();
+
+//在onfinsh退出时
+  @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(a1,a2);
+    }
+
+```
+
 
 ### 7.2 帧动画
 帧动画是顺序播放一组预先定义好的图片,类似与电影播放。
@@ -423,6 +444,12 @@ Android动画分为3种
         AnimationDrawable drawable = (AnimationDrawable) mButton.getBackground();
         drawable.start();
 ```
+
+### 7.3 属性动画
+
+ObjectAnimator、ValueAnimator 、 AnimatorSet
+相比View动画 做了更多的扩展
+
 
 
 

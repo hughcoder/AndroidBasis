@@ -1,0 +1,98 @@
+# Android知识
+### 四大组件是什么？
+Activity Service BoradCast ContentProvider
+### Activity 的生命周期？
+ 这个就不用再说了吧
+### Activity 之间的通信方式？
+* Intent
+* 静态变量
+* 全局变量 及Application
+* Android系统剪切板
+* 本地化存储方式(SharedPreference、SQLite、File)
+* Andorid组件（Broadcast）
+* EventBus
+
+
+### Activity 各种情况下的生命周期？
+
+横竖切换 ---根据screenSize的值
+
+跳转到下一个Actitity
+
+### 横竖屏切换时 Activity 的生命周期
+稍微记得不同版本生命周期不一样 （6.0--7.0--8.0）
+这边要看configChanges的设置
+设置android:configChanges="orientation|keyboardHidden|screenSize"  则都不会调用Activity的其他生命周期方法，只会调用onConfigurationChanged方法。
+
+如果设置了 orientation screenSize 生命周期
+竖(横)屏启动：onCreate -->onStart-->onResume
+切换横(竖)屏：onConfigurationChanged   （Android 6.0 Android 7.0 Android 8.0）
+
+如果没设置
+正常页面切换 -> onPause ->onSaveInstanceState ->onStop ->onDestroy -> onCreate ->onStart -> onRestoreInstanceState ->onResume
+
+
+### 前台切换到后台，然后再回到前台时 Activity 的生命周期
+onPause -> onSaveInstanceState -> onStop -> onRestart -> onstart -> onResume
+
+### 弹出 Dialog 的时候按 Home 键时 Activity 的生命周期
+
+onPause ->onSaveInstanceState(回调确实有) ->onStop ->onRestart ->onStart->onResume
+
+### 两个 Activity 之间跳转时的生命周期
+当前Activity -> onPause ->2onCreate->2onStart->2onResume ->1onStop
+确保有一个在前台页面
+### 下拉状态栏时 Activity 的生命周期
+小米6.0 不会变化。
+### Activity 与 Fragment 之间生命周期比较？
+### Activity 的四种 LaunchMode（启动模式）的区别？
+
+* 1.standard
+* 2.singleTop
+* 3.singleTask   -- 单实例模式
+* 4.singleInstance
+
+### Activity 状态保存与恢复？
+异常状况下会调用
+对应的onSaveInstanceState() 和onRestoreInstanceState（）
+
+* 什么时候调用onSaveInstanceState()
+1.屏幕旋转重建会调用onSaveInstanceState()
+2.启动另一个activity: 当前activity在离开前会调用onSaveInstanceState()
+3.按Home键的情形和启动另一个activity一样, 当前activity在离开前会onSaveInstanceState()
+
+* 什么时候调用onRestoreInstanceState()
+1.屏幕旋转重建会调用onRestoreInstanceState()
+2.启动另一个activity，返回时如果因为被系统杀死需要重建, 则会从onCreate()重新开始生命周期, 调用onRestoreInstanceState()
+3.按Home键的情形和启动另一个activity一样，用户再次点击应用图标返回时, 如果重建发生, 则会调用onCreate()和onRestoreInstanceState()
+（注：2、3其实都是Activity异常销毁）
+
+### Fragment 各种情况下的生命周期？
+### Activity 和 Fragment 之间怎么通信， Fragment 和 Fragment 怎么通信？
+### Service 的生命周期？
+### Service 的启动方式？
+### Service 与 IntentService 的区别?
+### Service 和 Activity 之间的通信方式？
+### 对 ContentProvider 的理解？
+### ContentProvider、ContentResolver、ContentObserver 之间的关系？
+### 对 BroadcastReceiver 的了解？
+### 广播的分类？使用方式和场景？
+### 动态广播和静态广播有什么区别？
+### AlertDialog、popupWindow、Activity 之间的区别？
+### Application 和 Activity 的 Context 之间的区别？
+### Android 属性动画特性？
+### 请列举 Android 中常见的布局（Layout）类型，并简述其用法，以及排版效率。【猎豹移动】 LinearLayout、RelativeLayout、FrameLayout 的特性对比及使用场景？
+### 对 SurfaceView 的了解？
+### Serializable 和 Parcelable 的区别？
+### Android 中数据存储方式有哪些？
+### 屏幕适配的处理技巧都有哪些?
+### Android 各个版本 API 的区别？
+### 动态权限适配方案，权限组的概念？
+### 为什么不能在子线程更新 UI？
+### ListView 图片加载错乱的原理和解决方案？
+### 对 RecycleView 的了解？
+### Recycleview 和 ListView 的区别？
+### RecycleView 实现原理？
+### Android Manifest 的作用与理解？
+### 多线程在 Android 中的使用？
+### 区别 Animation 和 Animator 的用法，概述实现原理？【猎豹移动】

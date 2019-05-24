@@ -16,14 +16,20 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hugh.basis.binder.UserManager;
 
+
 import java.util.HashMap;
+
+import java.util.concurrent.ThreadPoolExecutor;
+
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
     private RelativeLayout button3;
     private Button button4;
+    private View view;
+    private ListView listView;
     public static String TAG = MainActivity.class.getSimpleName();
     private HashMap hashMap = new HashMap();
     public static int markNum = 100;
@@ -58,9 +66,59 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            int width = button.getMeasuredWidth();
+            int height = button.getMeasuredHeight();
+            Log.e("a", width + "");
+            Log.e("a", height + "");
+        }
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         Log.e(TAG, "onStart");
+        button.post(new Runnable() {
+            @Override
+            public void run() {
+                int width = button.getMeasuredWidth();
+                int height = button.getMeasuredHeight();
+                Log.e("b", width + "");
+                Log.e("b", height + "");
+            }
+        });
+
+        ViewTreeObserver observer = button.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                button.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int width = button.getMeasuredWidth();
+                int height = button.getMeasuredHeight();
+                Log.e("c", width + "");
+                Log.e("c", height + "");
+            }
+        });
+
+//      针对具体数值  如果相对应的View给出了具体dp就填入就行了
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this, 100), View.MeasureSpec.EXACTLY);
+        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this, 100), View.MeasureSpec.EXACTLY);
+        button.measure(widthMeasureSpec, heightMeasureSpec);
+
+        // 如果是wrapContent的话
+        //makeMeasureSpec()  传入测量大小 ，测量模式
+//        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((a << 30) -a, View.MeasureSpec.AT_MOST);
+//        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((a << 30) -a, View.MeasureSpec.AT_MOST);
+//        button.measure(widthMeasureSpec, heightMeasureSpec);
+        Log.e("d", button.getMeasuredHeight() + "");
+        Log.e("d", button.getMeasuredWidth() + "");
+    }
+
+    public static int dip2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
     }
 
     @Override
@@ -114,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                Intent intent = new Intent(MainActivity.this, AnimationActivity.class);
                 startActivity(intent);
             }
         });
@@ -186,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+//        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
     }
 
     @Override

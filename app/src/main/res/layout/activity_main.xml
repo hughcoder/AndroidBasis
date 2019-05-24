@@ -5,8 +5,7 @@
     android:id="@+id/ll_contain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,9 +18,9 @@
 
     <Button
         android:id="@+id/btn_goto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="进入下一个Activity" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="进入动画相关Activity" />
 
     <Button
         android:id="@+id/btn_goself"
@@ -33,19 +32,19 @@
         android:id="@+id/btn_View"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@color/colorPrimaryDark"
-        >
+        android:background="@color/colorPrimaryDark">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="View的滑动 相关"
             android:textColor="@color/colorPrimary"
             android:textSize="16dp" />
     </RelativeLayout>
+
 
     <Button
         android:id="@+id/btn_goReceive"
@@ -58,4 +57,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="弹出一个dialog" />
+
+    <com.hugh.basis.View.CircleView
+        android:id="@+id/circleView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:layout_margin="20dp"
+        app:circle_color="@color/colorPrimaryDark"
+        android:padding="20dp" />
+
 </LinearLayout>

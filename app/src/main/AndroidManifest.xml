@@ -37,7 +37,10 @@
             android:name=".AnimationActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="standard" />
-
+        <activity
+            android:name=".activities.FragmentActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="standard" />
     </application>
 
 </manifest>

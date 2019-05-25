@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.binder.UserManager;
 
 
@@ -237,12 +238,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_dialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
-                        .setIcon(R.mipmap.ic_launcher_round)
-                        .setCancelable(false)
-                        .setMessage("Error")
-                        .setTitle("Warring")
-                        .show();
+//                AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
+//                        .setIcon(R.mipmap.ic_launcher_round)
+//                        .setCancelable(false)
+//                        .setMessage("Error")
+//                        .setTitle("Warring")
+//                        .show();
+                Intent intentFragment = new Intent(MainActivity.this, FragmentActivity.class);
+                startActivity(intentFragment);
             }
         });
 

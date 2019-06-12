@@ -26,10 +26,11 @@ Activity Service BoradCast ContentProvider
 
 如果设置了 orientation screenSize 生命周期
 竖(横)屏启动：onCreate -->onStart-->onResume
-切换横(竖)屏：onConfigurationChanged   （Android 6.0 Android 7.0 Android 8.0）
+
+* 切换横(竖)屏：onConfigurationChanged   （Android 6.0 Android 7.0 Android 8.0）
 
 如果没设置
-正常页面切换 -> onPause ->onSaveInstanceState ->onStop ->onDestroy -> onCreate ->onStart -> onRestoreInstanceState ->onResume
+* 正常页面切换 -> onPause ->onSaveInstanceState ->onStop ->onDestroy -> onCreate ->onStart -> onRestoreInstanceState ->onResume
 
 
 ### 前台切换到后台，然后再回到前台时 Activity 的生命周期
@@ -47,10 +48,23 @@ onPause ->onSaveInstanceState(回调确实有) ->onStop ->onRestart ->onStart->o
 ### Activity 与 Fragment 之间生命周期比较？
 ### Activity 的四种 LaunchMode（启动模式）的区别？
 
-* 1.standard
-* 2.singleTop
-* 3.singleTask   -- 单实例模式
+* 1.standard 标准模式，这也是系统默认启动模式
+
+* 2.singleTop 
+栈顶复用模式：如果新Activity已经位于任务栈的栈顶，那么此Activity不会被重新创建，但是会调用 onPause->onNewIntent->onResume 
+应用场景：登录页面、推送通知栏
+
+* 3.singleTask   
+栈内复用模式：这是一种单实例模式，只要Activity在一个栈中存在，那么多次启动此Activity都不会重新创建实例，若存在此Activity会把栈前的Activity销毁
+例：对于一个任务栈，存在ADBC，在重新启动D，则相应栈会变成AD
+应用场景：主页面（Fragment的containerActivity）、WebView页面、扫一扫页面、电商中：购物界面，确认订单界面，付款界面
+ 
 * 4.singleInstance
+单实例模式，，它除了具有SingleTask模式的所有特性外，还加强了一点，具有此种模式的Activity只能单独位于一个任务栈中，换句话说，当A启动后，
+系统会为它新建一个新的任务栈，然后A独自在这个新的任务栈中。
+应用场景：系统Launcher、锁屏键、来电显示等系统应用
+
+任务栈 用TaskAffinity，默认任务栈的名字为应用的包名
 
 ### Activity 状态保存与恢复？
 异常状况下会调用
@@ -67,8 +81,12 @@ onPause ->onSaveInstanceState(回调确实有) ->onStop ->onRestart ->onStart->o
 3.按Home键的情形和启动另一个activity一样，用户再次点击应用图标返回时, 如果重建发生, 则会调用onCreate()和onRestoreInstanceState()
 （注：2、3其实都是Activity异常销毁）
 
-### Fragment 各种情况下的生命周期？
+
 ### Activity 和 Fragment 之间怎么通信， Fragment 和 Fragment 怎么通信？
+
+
+
+
 ### Service 的生命周期？
 ### Service 的启动方式？
 ### Service 与 IntentService 的区别?

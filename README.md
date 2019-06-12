@@ -26,7 +26,7 @@ onPause、onStop ---- 是否位于前台这个角度
 
 ## 启动模式
 
-1.standard
+1.standard 标准模式，这也是系统默认启动模式
 2.singleTop
 3.singleTask   -- 单实例模式
 4.singleInstance

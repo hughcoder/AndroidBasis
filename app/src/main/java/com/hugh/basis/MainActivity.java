@@ -27,9 +27,18 @@ import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.binder.UserManager;
 
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okio.Timeout;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -72,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
         if (hasFocus) {
             int width = button.getMeasuredWidth();
             int height = button.getMeasuredHeight();
-            Log.e("a", width + "");
-            Log.e("a", height + "");
+//            Log.e("a", width + "");
+//            Log.e("a", height + "");
         }
     }
 
@@ -86,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 int width = button.getMeasuredWidth();
                 int height = button.getMeasuredHeight();
-                Log.e("b", width + "");
-                Log.e("b", height + "");
+//                Log.e("b", width + "");
+//                Log.e("b", height + "");
             }
         });
 
@@ -98,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 button.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 int width = button.getMeasuredWidth();
                 int height = button.getMeasuredHeight();
-                Log.e("c", width + "");
-                Log.e("c", height + "");
+//                Log.e("c", width + "");
+//                Log.e("c", height + "");
             }
         });
 
@@ -113,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
 //        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((a << 30) -a, View.MeasureSpec.AT_MOST);
 //        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((a << 30) -a, View.MeasureSpec.AT_MOST);
 //        button.measure(widthMeasureSpec, heightMeasureSpec);
-        Log.e("d", button.getMeasuredHeight() + "");
-        Log.e("d", button.getMeasuredWidth() + "");
+//        Log.e("d", button.getMeasuredHeight() + "");
+//        Log.e("d", button.getMeasuredWidth() + "");
     }
 
     public static int dip2px(Context context, float dipValue) {
@@ -132,6 +141,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.e(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e(TAG, "onNewIntent");
     }
 
     @Override
@@ -250,6 +265,40 @@ public class MainActivity extends AppCompatActivity {
         });
 
 //        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
+
+    }
+    //1 创建 client对象
+    OkHttpClient client = new OkHttpClient.Builder().readTimeout(5, TimeUnit.SECONDS).build();
+
+    // 同步
+    public void synRequest(){
+        //2 创建request 对象
+        Request request  = new Request.Builder().url("www.baidu.com").get().build();
+        //3 代表一个实际的okhttp请求
+        Call call = client.newCall(request);
+        //4返回response 第四步可以分为同步和异步
+        try {
+            Response response=call.execute();
+            Log.e("aaa",response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void asyRequest(){
+         Request request = new Request.Builder().url("http://www.baidu.com").get().build();
+         Call call = client.newCall(request);
+         call.enqueue(new Callback() { //enqueue这个方法会开启一个新的线程
+             @Override
+             public void onFailure(Call call, IOException e) {
+                 Log.e("aaa","fail");
+             }
+
+             @Override
+             public void onResponse(Call call, Response response) throws IOException {
+               Log.e("aaa",response.body().string());
+             }
+         });
     }
 
     @Override

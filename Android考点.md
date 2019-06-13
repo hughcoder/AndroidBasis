@@ -83,12 +83,22 @@ onPause ->onSaveInstanceState(回调确实有) ->onStop ->onRestart ->onStart->o
 
 
 ### Activity 和 Fragment 之间怎么通信， Fragment 和 Fragment 怎么通信？
-
-
-
+具体参考FragmentActivity、NameFragment、NameContentFragment3个类
+1.使用接口
+2.直接在一个Fragment中调用另外一个Fragment中的方法
+3.使用广播
+4.Fragment直接调用Activity中的public方法
 
 ### Service 的生命周期？
+
+* 使用context.startService() 启动Service
+其生命周期为context.startService() ->onCreate()- >onStart()->Service running-->(如果调用context.stopService() )->onDestroy() ->Service shut down
+
+* 对于bindService()启动Service会经历
+context.bindService()->onCreate()->onBind()->Service running-->onUnbind() -> onDestroy() ->Service stop
+
 ### Service 的启动方式？
+1. startService 2.bindService()
 ### Service 与 IntentService 的区别?
 ### Service 和 Activity 之间的通信方式？
 ### 对 ContentProvider 的理解？

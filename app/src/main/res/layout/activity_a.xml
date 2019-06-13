@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    >
+
+    <Button
+        android:id="@+id/btnBindService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnBindService"
+        android:background="@color/colorAccent"
+        />
+
+    <Button
+        android:id="@+id/btnUnbindService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnUnbindService"
+        android:background="@color/colorAccent"
+        />
+
+    <Button
+        android:id="@+id/btnStartActivityB"
+        android:text="btnStartActivityB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        />
+
+    <Button
+        android:id="@+id/btnFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnFinish"
+        android:background="@color/colorAccent"
+        />
+
+
+</LinearLayout>

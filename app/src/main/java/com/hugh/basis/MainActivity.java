@@ -23,8 +23,10 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.binder.UserManager;
+import com.hugh.basis.services.TestOneService;
 
 
 import java.io.IOException;
@@ -112,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_goService).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BindServiceActivity.class);
+                startActivity(intent);
+            }
+        });
+
 //      针对具体数值  如果相对应的View给出了具体dp就填入就行了
         int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this, 100), View.MeasureSpec.EXACTLY);
         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(dip2px(this, 100), View.MeasureSpec.EXACTLY);
@@ -172,6 +182,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "onCreate");
+
+        // 连续启动Service
+        //多次startService不会重复执行onCreate回调，但每次都会执行onStartCommand回调。
+        Intent intentOne = new Intent(this, TestOneService.class);
+        startService(intentOne);
+        Intent intentTwo = new Intent(this, TestOneService.class);
+        startService(intentTwo);
+
+
         UserManager.uUserId = 2;
 
         Log.e(TAG, "uUserID " + UserManager.uUserId);

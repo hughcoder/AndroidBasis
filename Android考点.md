@@ -98,7 +98,20 @@ onPause ->onSaveInstanceState(回调确实有) ->onStop ->onRestart ->onStart->o
 context.bindService()->onCreate()->onBind()->Service running-->onUnbind() -> onDestroy() ->Service stop
 
 ### Service 的启动方式？
-1. startService 2.bindService()
+
+* 1. startService 
+通过startService启动后，service会一直无限期运行下去，只有外部调用了stopService()或stopSelf()方法时，该Service才会停止运行并销毁。
+多次startService不会重复执行onCreate回调，但每次都会执行onStartCommand回调。
+
+2.bindService()
+bindService启动服务特点：
+1.bindService启动的服务和调用者之间是典型的client-server模式。调用者是client，service则是server端。service只有一个，但绑定到service上面的client可以有一个或很多个。这里所提到的client指的是组件，比如某个Activity。
+2.client可以通过IBinder接口获取Service实例，从而实现在client端直接调用Service中的方法以实现灵活交互，这在通过startService方法启动中是无法实现的。
+3.bindService启动服务的生命周期与其绑定的client息息相关。当client销毁时，client会自动与Service解除绑定。当然，client也可以明确调用Context的unbindService()方法与Service解除绑定。当没有任何client与Service绑定时，Service会自行销毁。
+
+
+
+
 ### Service 与 IntentService 的区别?
 ### Service 和 Activity 之间的通信方式？
 ### 对 ContentProvider 的理解？

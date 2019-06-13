@@ -41,6 +41,9 @@
             android:name=".activities.FragmentActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="standard" />
+        <service android:name=".services.TestOneService"/>
+        <service android:name=".services.TestTwoService"/>
+        <activity android:name=".activities.BindServiceActivity"/>
     </application>
 
 </manifest>

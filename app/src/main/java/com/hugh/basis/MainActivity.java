@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
+import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.services.TestOneService;
 
@@ -206,9 +207,11 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 //                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 //                Intent intent = new Intent(MainActivity.this, AnimationActivity.class);
+
                 startActivity(intent);
             }
         });
@@ -295,6 +298,7 @@ public class MainActivity extends AppCompatActivity {
         Request request  = new Request.Builder().url("www.baidu.com").get().build();
         //3 代表一个实际的okhttp请求
         Call call = client.newCall(request);
+//        call.cancel();
         //4返回response 第四步可以分为同步和异步
         try {
             Response response=call.execute();

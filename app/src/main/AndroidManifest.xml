@@ -44,6 +44,7 @@
         <service android:name=".services.TestOneService"/>
         <service android:name=".services.TestTwoService"/>
         <activity android:name=".activities.BindServiceActivity"/>
+        <activity android:name=".activities.ListActivity"/>
     </application>
 
 </manifest>

@@ -27,6 +27,7 @@ import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.binder.UserManager;
+import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.services.TestOneService;
 
 
@@ -282,6 +283,14 @@ public class MainActivity extends AppCompatActivity {
 //                        .setTitle("Warring")
 //                        .show();
                 Intent intentFragment = new Intent(MainActivity.this, FragmentActivity.class);
+                startActivity(intentFragment);
+            }
+        });
+
+        findViewById(R.id.btn_goEventBus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentFragment = new Intent(MainActivity.this, EventActivity1.class);
                 startActivity(intentFragment);
             }
         });

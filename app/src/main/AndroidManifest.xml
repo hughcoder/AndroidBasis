@@ -45,6 +45,8 @@
         <service android:name=".services.TestTwoService"/>
         <activity android:name=".activities.BindServiceActivity"/>
         <activity android:name=".activities.ListActivity"/>
+        <activity android:name=".eventbus.EventActivity1"/>
+        <activity android:name=".eventbus.EventActivity2"/>
     </application>
 
 </manifest>

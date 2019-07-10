@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.hugh.basis.MainActivity;
 import com.hugh.basis.R;
 import com.hugh.basis.eventbus.message.MessageEvent;
+import com.hugh.basis.eventbus.message.SuccessEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -24,12 +25,14 @@ import org.greenrobot.eventbus.ThreadMode;
 public class EventActivity1 extends AppCompatActivity {
     private TextView textView;
     private Button button;
+    private TextView tv_2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event1);
         textView = findViewById(R.id.tv_text);
+        tv_2 = findViewById(R.id.tv_text222);
         EventBus.getDefault().register(this);
         button = (Button) findViewById(R.id.secondActivityBtn);
         button.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +42,7 @@ public class EventActivity1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     //订阅方法，当接收到事件的时候，会调用该方法
@@ -53,6 +57,13 @@ public class EventActivity1 extends AppCompatActivity {
         Log.d("aaa","receive it");
         textView.setText(event.getMessage());
         Toast.makeText(EventActivity1.this, event.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSuccessEvent(SuccessEvent successEvent){
+        Log.d("aaa","receive it");
+        tv_2.setText(successEvent.getMessage());
+        Toast.makeText(EventActivity1.this, successEvent.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
 

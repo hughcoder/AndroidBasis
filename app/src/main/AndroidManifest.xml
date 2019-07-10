@@ -47,6 +47,8 @@
         <activity android:name=".activities.ListActivity"/>
         <activity android:name=".eventbus.EventActivity1"/>
         <activity android:name=".eventbus.EventActivity2"/>
+        <activity android:name=".ijkplayer.PlayActivity"/>
+        <activity android:name=".webView.WebViewActivity"/>
     </application>
 
 </manifest>

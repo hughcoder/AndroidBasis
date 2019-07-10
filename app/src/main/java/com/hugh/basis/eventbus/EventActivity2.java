@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.hugh.basis.R;
 import com.hugh.basis.eventbus.message.MessageEvent;
+import com.hugh.basis.eventbus.message.SuccessEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -23,6 +24,14 @@ public class EventActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new MessageEvent("Hello !....."));
+                finish();
+            }
+        });
+
+        findViewById(R.id.sendMessageBtn2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new SuccessEvent("我是登陆成功的消息 哈哈哈"));
                 finish();
             }
         });

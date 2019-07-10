@@ -52,6 +52,7 @@
         <activity android:name=".ijkplayer.PlayActivity"/>
         <activity android:name=".webView.WebViewActivity"/>
         <activity android:name=".MediaPlay.MediaPlayActivity"/>
+        <activity android:name=".videoView.VideoViewActivity"/>
     </application>
 
 </manifest>

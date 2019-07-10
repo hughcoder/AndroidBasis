@@ -31,6 +31,7 @@ import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.ijkplayer.PlayActivity;
 import com.hugh.basis.services.TestOneService;
+import com.hugh.basis.videoView.VideoViewActivity;
 import com.hugh.basis.webView.WebViewActivity;
 
 
@@ -318,6 +319,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(MainActivity.this, MediaPlayActivity.class);
+                startActivity(intent2);
+            }
+        });
+        findViewById(R.id.btn_goVideoView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, VideoViewActivity.class);
                 startActivity(intent2);
             }
         });

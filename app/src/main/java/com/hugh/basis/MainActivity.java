@@ -29,6 +29,7 @@ import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.services.TestOneService;
+import com.hugh.basis.webView.WebViewActivity;
 
 
 import java.io.IOException;
@@ -291,6 +292,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentFragment = new Intent(MainActivity.this, EventActivity1.class);
+                startActivity(intentFragment);
+            }
+        });
+
+        findViewById(R.id.btn_goWeb).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentFragment = new Intent(MainActivity.this, WebViewActivity.class);
                 startActivity(intentFragment);
             }
         });

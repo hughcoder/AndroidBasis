@@ -70,17 +70,24 @@
             android:background="#000000"
             android:padding="20dp"
             app:circle_color="@color/colorPrimaryDark" />
+
         <Button
             android:id="@+id/btn_goService"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="进入Service相关页面" />
+
         <Button
             android:id="@+id/btn_goEventBus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="进入Eventbus相关页面" />
 
+        <Button
+            android:id="@+id/btn_goWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入Web相关页面" />
 
     </LinearLayout>
 </ScrollView>

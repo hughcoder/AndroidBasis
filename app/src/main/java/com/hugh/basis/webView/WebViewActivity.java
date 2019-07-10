@@ -1,17 +1,26 @@
 package com.hugh.basis.webView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,7 +33,9 @@ public class WebViewActivity extends AppCompatActivity {
 
     private WebView webView;
     private ProgressBar progressBar;
-
+    private final String url = "https://www.baidu.com/s?wd=Android%20webView%20%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8&rsv_spt=1&rsv_iqid=0xca817d92002a8a5c&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=33&rsv_sug1=21&rsv_sug7=100&rsv_t=3eb7RnblWzeOqkPkn7qWtHmVpBr0YtODk%2Fd6Z4wOrDn%2FW%2BjSVSEKFBAHo3C%2FQYvoAxN0&rsv_sug2=0&inputT=8862&rsv_sug4=8862";
+    private final String url2 = "https://www.baidu.com";
+    private final String url3 ="file:///android_asset/a.html";
 
 
     @SuppressLint("JavascriptInterface")
@@ -32,45 +43,91 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
+        Log.e("aaa", "webView 初始化");
         webView = findViewById(R.id.web_view);
         progressBar = findViewById(R.id.progressbar);
-        webView.loadUrl("www.baidu.com");//加载url
+        webView.setWebViewClient(new WebViewClient());//使其跳转后依然使用webview来显示
+        webView.loadUrl(url3);//利用loadUrl（）显示网址
 
-        webViewClient = new WebViewClient();
-        webView.addJavascriptInterface(this,"android");
+        webView.setWebChromeClient(webChromeClient);
+        webView.setWebViewClient(webViewClient);
 
-//        webView.setWebChromeClient();
+        WebSettings webSettings = webView.getSettings();
+      //  webSettings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
+    //    webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
+        // 设置与Js交互的权限
+        webSettings.setJavaScriptEnabled(true);
+        // 设置允许JS弹窗
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 通过Handler发送消息
+                webView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //方法一
+                        // 注意调用的JS方法名要对应上
+                        // 调用javascript的callJS()方法
+                        webView.loadUrl("javascript:callJS()");
+                    }
+                });
+            }
+        });
     }
+
     //WebViewClient主要帮助WebView处理各种通知、请求事件
-    private WebViewClient webViewClient=new WebViewClient(){
+    private WebViewClient webViewClient = new WebViewClient() {
+        //作用：处理各种通知 & 请求事件
         @Override
         public void onPageFinished(WebView view, String url) {//页面加载完成
+            //作用：在页面加载结束时调用。我们可以关闭loading 条，切换程序动作。
             progressBar.setVisibility(View.GONE);
         }
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {//页面开始加载
+            //作用：开始载入页面调用的，我们可以设定一个loading的页面，告诉用户程序在等待网络响应。
             progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Log.i("ansen","拦截url:"+url);
-            if(url.equals("http://www.google.com/")){
-                Toast.makeText(WebViewActivity.this,"国内不能访问google,拦截该url",Toast.LENGTH_LONG).show();
+            Log.i("ansen", "拦截url:" + url);
+            if (url.equals("http://www.google.com/")) {
+                Toast.makeText(WebViewActivity.this, "国内不能访问google,拦截该url", Toast.LENGTH_LONG).show();
                 return true;//表示我已经处理过了
             }
             return super.shouldOverrideUrlLoading(view, url);
         }
+
+        //作用：在加载页面资源时会调用，每一个资源（比如图片）的加载都会调用一次。
+        @Override
+        public void onLoadResource(WebView view, String url) {
+            super.onLoadResource(view, url);
+        }
+
+        //作用：加载页面的服务器出现错误时（如404）调用。
+        @Override
+        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+            super.onReceivedError(view, request, error);
+        }
+
+
     };
 
     //WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、网站title、加载进度等
-    private WebChromeClient webChromeClient=new WebChromeClient(){
+    private WebChromeClient webChromeClient = new WebChromeClient() {
         //不支持js的alert弹窗，需要自己监听然后通过dialog弹窗
+        // 由于设置了弹窗检验调用结果,所以需要支持js对话框
+        // webview只是载体，内容的渲染需要使用webviewChromClient类去实现
+        // 通过设置WebChromeClient对象处理JavaScript的对话框
+        //设置响应js 的Alert()函数
         @Override
         public boolean onJsAlert(WebView webView, String url, String message, JsResult result) {
             AlertDialog.Builder localBuilder = new AlertDialog.Builder(webView.getContext());
-            localBuilder.setMessage(message).setPositiveButton("确定",null);
+            localBuilder.setMessage(message).setPositiveButton("确定", null);
             localBuilder.setCancelable(false);
             localBuilder.create().show();
 
@@ -86,7 +143,7 @@ public class WebViewActivity extends AppCompatActivity {
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
-            Log.i("ansen","网页标题:"+title);
+            Log.i("ansen", "网页标题:" + title);
         }
 
         //加载进度回调
@@ -94,7 +151,73 @@ public class WebViewActivity extends AppCompatActivity {
         public void onProgressChanged(WebView view, int newProgress) {
             progressBar.setProgress(newProgress);
         }
+
+        //作用：支持javascript的确认框
+        @Override
+        public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+            new AlertDialog.Builder(WebViewActivity.this)
+                    .setTitle("JsConfirm")
+                    .setMessage(message)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            result.confirm();
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            result.cancel();
+                        }
+                    })
+                    .setCancelable(false)
+                    .show();
+// 返回布尔值：判断点击时确认还是取消
+// true表示点击了确认；false表示点击了取消；
+            return true;
+        }
+
+        //点击确认返回输入框中的值，点击取消返回 null。
+
+        @Override
+        public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+            final EditText et = new EditText(WebViewActivity.this);
+            et.setText(defaultValue);
+            new AlertDialog.Builder(WebViewActivity.this)
+                    .setTitle(message)
+                    .setView(et)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            result.confirm(et.getText().toString());
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            result.cancel();
+                        }
+                    })
+                    .setCancelable(false)
+                    .show();
+
+            return true;
+        }
     };
 
+//在 Activity 销毁（ WebView ）的时候，先让 WebView 加载null内容，然后移除 WebView，再销毁 WebView，最后置空。
+    @Override
+    protected void onDestroy() {
+        //下面的处理是在一定程度减少了内存泄漏
+        if (webView != null) {
+            webView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
+            webView.clearHistory();
 
+            ((ViewGroup) webView.getParent()).removeView(webView);
+            webView.destroy();
+            webView = null;
+        }
+        super.onDestroy();
+
+    }
 }

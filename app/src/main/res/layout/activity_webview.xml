@@ -6,7 +6,7 @@
     <WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+        android:layout_height="match_parent"/>
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -16,6 +16,16 @@
         android:max="100"
         android:progress="0"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="点击一下"
+        android:textSize="16sp"
+        android:textColor="@color/colorAccent"
+        android:background="#000000"
+        />
 
 
 </FrameLayout>

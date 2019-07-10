@@ -23,11 +23,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hugh.basis.MediaPlay.MediaPlayActivity;
 import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.eventbus.EventActivity1;
+import com.hugh.basis.ijkplayer.PlayActivity;
 import com.hugh.basis.services.TestOneService;
 import com.hugh.basis.webView.WebViewActivity;
 
@@ -301,6 +303,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentFragment = new Intent(MainActivity.this, WebViewActivity.class);
                 startActivity(intentFragment);
+            }
+        });
+
+        findViewById(R.id.btn_goPlayer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentFragment = new Intent(MainActivity.this, PlayActivity.class);
+                startActivity(intentFragment);
+            }
+        });
+
+        findViewById(R.id.btn_goMediaPlayer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, MediaPlayActivity.class);
+                startActivity(intent2);
             }
         });
 

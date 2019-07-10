@@ -89,5 +89,22 @@
             android:layout_height="wrap_content"
             android:text="进入Web相关页面" />
 
+        <Button
+            android:id="@+id/btn_goPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入播放相关页面" />
+        <Button
+            android:id="@+id/btn_goMediaPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入MediaPlayer页面" />
+
+        <Button
+            android:id="@+id/btn_goVideoView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入VideoView页面" />
+
     </LinearLayout>
 </ScrollView>

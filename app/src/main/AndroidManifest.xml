@@ -51,6 +51,7 @@
         <activity android:name=".eventbus.EventActivity2"/>
         <activity android:name=".ijkplayer.PlayActivity"/>
         <activity android:name=".webView.WebViewActivity"/>
+        <activity android:name=".MediaPlay.MediaPlayActivity"/>
     </application>
 
 </manifest>

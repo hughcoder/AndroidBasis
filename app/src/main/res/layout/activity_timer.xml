@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/handler_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启定时"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        />
+
+    <Button
+        android:id="@+id/btn_delete_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除定时"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        />
+
+</LinearLayout>

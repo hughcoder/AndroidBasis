@@ -54,6 +54,7 @@
         <activity android:name=".MediaPlay.MediaPlayActivity"/>
         <activity android:name=".videoView.VideoViewActivity"/>
         <activity android:name=".retrofit.RetrofitActivity"/>
+        <activity android:name=".timer.TimerActivity"/>
     </application>
 
 </manifest>

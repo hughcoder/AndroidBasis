@@ -7,15 +7,19 @@ import android.util.Log;
  */
 public class Translation {
 
-    private int status;
-    private content content;
+    public int status;
+    public content content;
 
-    private static class content {
+    public static class content {
         private String from;
         private String to;
         private String vendor;
         private String out;
         private int errNo;
+    }
+
+    public String getVerdor() {
+        return content.vendor;
     }
 
     public void show() {

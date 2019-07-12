@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hugh.basis.R;
@@ -21,10 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitActivity extends AppCompatActivity {
 
+    private TextView textView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit);
+        textView = findViewById(R.id.tv_text_retrofit);
         request();
     }
 
@@ -52,8 +56,8 @@ public class RetrofitActivity extends AppCompatActivity {
                 // 步骤7：处理返回的数据结果
                 if (response.body() != null) {
                     response.body().show();
+                    textView.setText(response.body().getVerdor());
                 }
-                Log.e("aaa", "response为空");
             }
 
             @Override

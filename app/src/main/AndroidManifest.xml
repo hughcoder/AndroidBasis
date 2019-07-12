@@ -53,6 +53,7 @@
         <activity android:name=".webView.WebViewActivity"/>
         <activity android:name=".MediaPlay.MediaPlayActivity"/>
         <activity android:name=".videoView.VideoViewActivity"/>
+        <activity android:name=".retrofit.RetrofitActivity"/>
     </application>
 
 </manifest>

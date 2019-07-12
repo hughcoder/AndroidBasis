@@ -30,6 +30,7 @@ import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.ijkplayer.PlayActivity;
+import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.services.TestOneService;
 import com.hugh.basis.videoView.VideoViewActivity;
 import com.hugh.basis.webView.WebViewActivity;
@@ -329,6 +330,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+
+        findViewById(R.id.btn_goretrofit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, RetrofitActivity.class);
+                startActivity(intent2);
+            }
+        });
+
 
 //        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
 

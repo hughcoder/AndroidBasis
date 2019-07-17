@@ -34,6 +34,7 @@ import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.services.TestOneService;
 import com.hugh.basis.timer.TimerActivity;
 import com.hugh.basis.videoView.VideoViewActivity;
+import com.hugh.basis.viewpager.ViewPagerActivity;
 import com.hugh.basis.webView.WebViewActivity;
 
 
@@ -348,42 +349,51 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_goviewPager).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, ViewPagerActivity.class);
+                startActivity(intent2);
+            }
+        });
+
 //        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
 
     }
+
     //1 创建 client对象
     OkHttpClient client = new OkHttpClient.Builder().readTimeout(5, TimeUnit.SECONDS).build();
 
     // 同步
-    public void synRequest(){
+    public void synRequest() {
         //2 创建request 对象
-        Request request  = new Request.Builder().url("www.baidu.com").get().build();
+        Request request = new Request.Builder().url("www.baidu.com").get().build();
         //3 代表一个实际的okhttp请求
         Call call = client.newCall(request);
 //        call.cancel();
         //4返回response 第四步可以分为同步和异步
         try {
-            Response response=call.execute();
-            Log.e("aaa",response.body().string());
+            Response response = call.execute();
+            Log.e("aaa", response.body().string());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void asyRequest(){
-         Request request = new Request.Builder().url("http://www.baidu.com").get().build();
-         Call call = client.newCall(request);
-         call.enqueue(new Callback() { //enqueue这个方法会开启一个新的线程
-             @Override
-             public void onFailure(Call call, IOException e) {
-                 Log.e("aaa","fail");
-             }
+    public void asyRequest() {
+        Request request = new Request.Builder().url("http://www.baidu.com").get().build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() { //enqueue这个方法会开启一个新的线程
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("aaa", "fail");
+            }
 
-             @Override
-             public void onResponse(Call call, Response response) throws IOException {
-               Log.e("aaa",response.body().string());
-             }
-         });
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e("aaa", response.body().string());
+            }
+        });
     }
 
     @Override

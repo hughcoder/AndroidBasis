@@ -118,5 +118,16 @@
             android:layout_height="wrap_content"
             android:text="进入多任务定时页面" />
 
+        <Button
+            android:id="@+id/btn_goviewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入viewPager页面" />
+        <Button
+            android:id="@+id/btn_goTestLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入页面测试布局" />
+
     </LinearLayout>
 </ScrollView>

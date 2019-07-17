@@ -1,0 +1,6 @@
+projectKey=com.hugh.basis
+serverUrl=http://localhost:9000
+serverVersion=7.9.0.26994
+dashboardUrl=http://localhost:9000/dashboard?id=com.hugh.basis
+ceTaskId=AWvlxdKAURiQucR8h5DW
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWvlxdKAURiQucR8h5DW

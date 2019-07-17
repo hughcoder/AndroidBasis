@@ -55,6 +55,9 @@
         <activity android:name=".videoView.VideoViewActivity"/>
         <activity android:name=".retrofit.RetrofitActivity"/>
         <activity android:name=".timer.TimerActivity"/>
+        <activity android:name=".viewpager.ViewPagerActivity"/>
+        <activity android:name=".activities.ListTimeActivity"/>
+        <activity android:name=".activities.TestLayoutActivity"/>
     </application>
 
 </manifest>

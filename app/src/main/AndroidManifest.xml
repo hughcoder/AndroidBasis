@@ -58,6 +58,7 @@
         <activity android:name=".viewpager.ViewPagerActivity"/>
         <activity android:name=".activities.ListTimeActivity"/>
         <activity android:name=".activities.TestLayoutActivity"/>
+        <activity android:name=".dialog.DialogShowActivity"/>
     </application>
 
 </manifest>

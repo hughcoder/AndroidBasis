@@ -28,6 +28,7 @@ import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.binder.UserManager;
+import com.hugh.basis.dialog.DialogShowActivity;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.ijkplayer.PlayActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
@@ -353,6 +354,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(MainActivity.this, ViewPagerActivity.class);
+                startActivity(intent2);
+            }
+        });
+
+        findViewById(R.id.btn_goDialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, DialogShowActivity.class);
                 startActivity(intent2);
             }
         });

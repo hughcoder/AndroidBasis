@@ -129,5 +129,11 @@
             android:layout_height="wrap_content"
             android:text="进入页面测试布局" />
 
+        <Button
+            android:id="@+id/btn_goDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进去dialog弹框界面" />
+
     </LinearLayout>
 </ScrollView>

@@ -3,6 +3,7 @@ package com.hugh.basis.dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,6 +19,7 @@ public class DialogShowActivity extends AppCompatActivity {
     private Button button;
     private SelfDialog selfDialog;
     private LinearLayout linearLayout;
+    private TeenagerTipDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +56,26 @@ public class DialogShowActivity extends AppCompatActivity {
                 selfDialog.show();
 
 
+            }
+        });
+
+        findViewById(R.id.btn_show_teenager_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog = new TeenagerTipDialog();
+                dialog.setOnclickListener(new TeenagerTipDialog.onDialogClickListener() {
+                    @Override
+                    public void onSettingClick() {
+                        Log.e("aaa","设置点击");
+                    }
+
+                    @Override
+                    public void onDialogOffClick() {
+                        Log.e("aaa","取消提示框");
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show(getSupportFragmentManager(),"custom");
             }
         });
 

@@ -66,12 +66,10 @@ public class DialogShowActivity extends AppCompatActivity {
                 dialog.setOnclickListener(new TeenagerTipDialog.onDialogClickListener() {
                     @Override
                     public void onSettingClick() {
-                        Log.e("aaa","设置点击");
                     }
 
                     @Override
                     public void onDialogOffClick() {
-                        Log.e("aaa","取消提示框");
                         dialog.dismiss();
                     }
                 });

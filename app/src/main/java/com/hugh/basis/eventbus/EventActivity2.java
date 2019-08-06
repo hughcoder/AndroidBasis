@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hugh.basis.R;
+import com.hugh.basis.eventbus.message.AEvent;
 import com.hugh.basis.eventbus.message.MessageEvent;
 import com.hugh.basis.eventbus.message.SuccessEvent;
 
@@ -24,6 +25,7 @@ public class EventActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new MessageEvent("Hello !....."));
+                EventBus.getDefault().post(new AEvent()); //包名不同不行的 可以看下类加载相关机制
                 finish();
             }
         });

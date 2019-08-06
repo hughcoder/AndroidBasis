@@ -40,8 +40,10 @@ import com.hugh.basis.webView.WebViewActivity;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -111,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
 //                Log.e("b", height + "");
             }
         });
+
+        List a = new ArrayList();
+        a.size();
 
         ViewTreeObserver observer = button.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

@@ -66,6 +66,12 @@ public class EventActivity1 extends AppCompatActivity {
         Toast.makeText(EventActivity1.this, successEvent.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void AEvent(AEvent successEvent){
+        Log.d("aaa","不同包名event");
+     ;
+    }
+
 
     @Override
     protected void onDestroy() {

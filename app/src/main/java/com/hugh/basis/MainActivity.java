@@ -1,14 +1,9 @@
 package com.hugh.basis;
 
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.PersistableBundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,10 +23,13 @@ import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.binder.UserManager;
+import com.hugh.basis.constraintlayout.ConstraintLayoutActivity;
 import com.hugh.basis.dialog.DialogShowActivity;
 import com.hugh.basis.eventbus.EventActivity1;
+import com.hugh.basis.footer.HeaderAndFooterActivity;
 import com.hugh.basis.ijkplayer.PlayActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
+import com.hugh.basis.rvlooper.LooperActivity;
 import com.hugh.basis.services.TestOneService;
 import com.hugh.basis.timer.TimerActivity;
 import com.hugh.basis.videoView.VideoViewActivity;
@@ -44,7 +42,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -52,7 +49,6 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okio.Timeout;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -371,6 +367,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_goconstraintLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, ConstraintLayoutActivity.class);
+                startActivity(intent2);
+            }
+        });
+
+        findViewById(R.id.btn_looper_rv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, LooperActivity.class);
+                startActivity(intent2);
+            }
+        });
+
+        findViewById(R.id.btn_header_footer_rv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, HeaderAndFooterActivity.class);
+                startActivity(intent2);
+            }
+        });
 //        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
 
     }

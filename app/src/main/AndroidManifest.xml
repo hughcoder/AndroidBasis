@@ -59,6 +59,9 @@
         <activity android:name=".activities.ListTimeActivity"/>
         <activity android:name=".activities.TestLayoutActivity"/>
         <activity android:name=".dialog.DialogShowActivity"/>
+        <activity android:name=".constraintlayout.ConstraintLayoutActivity"/>
+        <activity android:name=".rvlooper.LooperActivity"/>
+        <activity android:name=".footer.HeaderAndFooterActivity"/>
     </application>
 
 </manifest>

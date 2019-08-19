@@ -1,7 +1,6 @@
 package com.hugh.basis.rvlooper;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,9 +16,9 @@ import java.util.List;
  */
 public class LooperActivity extends AppCompatActivity {
 
-    private AutoPollRecyclerView mRecyclerView;
+    private AutoRollRecyclerView mRecyclerView;
     private List<GroupBookingEntity> list = new ArrayList<>();
-    private AutoPollAdapter mAdapter;
+    private AutoRollAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +42,8 @@ public class LooperActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mRecyclerView = (AutoPollRecyclerView) findViewById(R.id.rv_recycleView);
-        mAdapter = new AutoPollAdapter(list);
+        mRecyclerView = (AutoRollRecyclerView) findViewById(R.id.rv_recycleView);
+        mAdapter = new AutoRollAdapter(list);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(mAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

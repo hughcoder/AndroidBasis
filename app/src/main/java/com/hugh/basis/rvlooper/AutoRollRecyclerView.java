@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by chenyw on 2019-08-15.
  */
-public class AutoPollRecyclerView extends RecyclerView {
+public class AutoRollRecyclerView extends RecyclerView {
 
     private static final long TIME_AUTO_POLL = 3000;
     AutoPollTask autoPollTask;
@@ -19,23 +19,23 @@ public class AutoPollRecyclerView extends RecyclerView {
     private boolean canRun;//表示是否可以自动轮询
 
 
-    public AutoPollRecyclerView(Context context, @Nullable AttributeSet attrs) {
+    public AutoRollRecyclerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         autoPollTask = new AutoPollTask(this);
     }
 
     static class AutoPollTask implements Runnable {
         private int i = 3;
-        private final WeakReference<AutoPollRecyclerView> mReference;
+        private final WeakReference<AutoRollRecyclerView> mReference;
 
         //使用弱引用持有外部类引用->防止内存泄漏
-        public AutoPollTask(AutoPollRecyclerView reference) {
-            this.mReference = new WeakReference<AutoPollRecyclerView>(reference);
+        public AutoPollTask(AutoRollRecyclerView reference) {
+            this.mReference = new WeakReference<AutoRollRecyclerView>(reference);
         }
 
         @Override
         public void run() {
-            AutoPollRecyclerView recyclerView = mReference.get();
+            AutoRollRecyclerView recyclerView = mReference.get();
             if (recyclerView != null && recyclerView.running && recyclerView.canRun) {
                 recyclerView.smoothScrollToPosition(i);
                 i += 2;

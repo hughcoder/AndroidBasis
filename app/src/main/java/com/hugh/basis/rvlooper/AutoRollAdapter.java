@@ -1,6 +1,5 @@
 package com.hugh.basis.rvlooper;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
@@ -21,19 +20,18 @@ import com.hugh.basis.rvlooper.bean.GroupBookingEntity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
  * Created by chenyw on 2019-08-15.
  */
-public class AutoPollAdapter extends RecyclerView.Adapter<AutoPollAdapter.BaseViewHolder> {
+public class AutoRollAdapter extends RecyclerView.Adapter<AutoRollAdapter.BaseViewHolder> {
     HashMap<String, CountDownTimer> timerMap = new HashMap<>();
     ArrayList<String> timerKeyList = new ArrayList<>();
     private List<GroupBookingEntity> mData;
 
 
-    public AutoPollAdapter(List<GroupBookingEntity> list) {
+    public AutoRollAdapter(List<GroupBookingEntity> list) {
         this.mData = list;
     }
 

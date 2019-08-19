@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.hugh.basis.rvlooper.AutoPollRecyclerView
+    <com.hugh.basis.rvlooper.AutoRollRecyclerView
         android:id="@+id/rv_recycleView"
         android:layout_width="match_parent"
         android:layout_height="120dp"/>

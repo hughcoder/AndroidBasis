@@ -3,6 +3,7 @@ package com.hugh.basis;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
     private HashMap hashMap = new HashMap();
     public static int markNum = 100;
     private Button button5;
-
+    private int ppp;
+    private TextView mTvMsg;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -212,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+        mTvMsg = findViewById(R.id.tv_hello_world);
         button = findViewById(R.id.btn_goto);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -390,8 +393,34 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+
+        Log.e("aaa ----pppp",ppp+"");
 //        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
 
+//        Log.e("aaa","111111");
+//        String a = "";
+//        if(a.equals("")){
+//            throw new IllegalArgumentException("类型错误！");
+//        }
+//        Log.e("aaa","222222222");
+
+        if(isApkInDebug(this)){
+            mTvMsg.setText("这是debug打开状态");
+        }else{
+            mTvMsg.setText("这是debug关闭状态");
+        }
+    }
+
+    /**
+     * 判断当前应用是否是debug状态
+     */
+    public static boolean isApkInDebug(Context context) {
+        try {
+            ApplicationInfo info = context.getApplicationInfo();
+            return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     //1 创建 client对象

@@ -29,13 +29,13 @@ public class LooperActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             GroupBookingEntity entity = new GroupBookingEntity();
             entity.nickname = "我是一个游客"+i;
             entity.collage_people = "10";
             entity.now_people = i+"";
             entity.end_time = "86400";
-            entity.current_time =(100+i*30)+"";
+            entity.current_time =(1000+i*300)+"";
             entity.id="id"+i;
             list.add(entity);
         }

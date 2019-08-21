@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class AutoRollAdapter extends RecyclerView.Adapter<AutoRollAdapter.BaseVi
     HashMap<String, CountDownTimer> timerMap = new HashMap<>();
     ArrayList<String> timerKeyList = new ArrayList<>();
     private List<GroupBookingEntity> mData;
+    HashMap<String, Long> secondsMap = new HashMap<>();
 
 
     public AutoRollAdapter(List<GroupBookingEntity> list) {
@@ -53,6 +55,7 @@ public class AutoRollAdapter extends RecyclerView.Adapter<AutoRollAdapter.BaseVi
         long endTime = Long.parseLong(data.end_time);
         long seconds = endTime - currenTime;
         final String mCollageId = data.id;
+        String index = String.valueOf(position);
 
         holder.mLayoutGoGourp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,8 +68,8 @@ public class AutoRollAdapter extends RecyclerView.Adapter<AutoRollAdapter.BaseVi
 
         holder.mTvleaveMembers.setText(spannableString);
         String id = data.id;
-        if (!timerKeyList.contains(id)) {
-            timerKeyList.add(id);
+        if (!timerKeyList.contains(index)) {
+            timerKeyList.add(index);
         }
 
         // -----一开始初始化数据
@@ -74,17 +77,36 @@ public class AutoRollAdapter extends RecyclerView.Adapter<AutoRollAdapter.BaseVi
         if (holder.countDownTimer != null) {
             holder.countDownTimer.cancel();
         }
-        holder.countDownTimer = new CountDownTimer(seconds * 1000, 1000) {
-            public void onTick(long l) {
-                holder.mTvCountDown.setText(getTimeStr(l));
-            }
 
-            public void onFinish() {
-                //倒计时结束
+
+        if (secondsMap.get(id) == null) {
+            holder.countDownTimer = new CountDownTimer(seconds * 1000, 1000) {
+                public void onTick(long l) {
+                    holder.mTvCountDown.setText(getTimeStr(l));
+                    Log.e("aaa",l+"");
+                    secondsMap.put(id, l);
+                }
+
+                public void onFinish() {
+                    //倒计时结束
 //                holder.timeTv.setText("00:00");
-            }
-        }.start();
-        timerMap.put(id, holder.countDownTimer);
+                }
+            }.start();
+        } else {
+            holder.countDownTimer = new CountDownTimer(secondsMap.get(id) , 1000) {
+                public void onTick(long l) {
+                    holder.mTvCountDown.setText(getTimeStr(l));
+                    secondsMap.put(id, l);
+                    Log.e("ccc",l+"");
+                }
+
+                public void onFinish() {
+                    //倒计时结束
+//                holder.timeTv.setText("00:00");
+                }
+            }.start();
+        }
+        timerMap.put(index, holder.countDownTimer);
     }
 
     private String getTimeStr(long l) {

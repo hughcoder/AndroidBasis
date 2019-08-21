@@ -62,6 +62,9 @@
         <activity android:name=".constraintlayout.ConstraintLayoutActivity"/>
         <activity android:name=".rvlooper.LooperActivity"/>
         <activity android:name=".footer.HeaderAndFooterActivity"/>
+
     </application>
+
+
 
 </manifest>

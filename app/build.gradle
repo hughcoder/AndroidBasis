@@ -11,6 +11,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug{
+            debuggable true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -52,4 +57,7 @@ dependencies {
   // ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
     implementation 'com.android.support:cardview-v7:25.3.1'
+  // 滴滴调试工具
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:1.2.1'
+    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.2.0'
 }

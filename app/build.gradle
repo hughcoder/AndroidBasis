@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.tencent.tinker.patch'
+apply from: 'tinker-support.gradle'
 
 android {
     compileSdkVersion 28
@@ -9,22 +11,40 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        multiDexEnabled true // 开启dex分包
     }
     buildTypes {
-
-        debug{
-            debuggable true
-        }
-
         release {
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), project.file('proguard-rules.pro')
+        }
+        debug {
+            debuggable true
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
+
 
     compileOptions {//使用JAVA8语法解析
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // 这里做签名的配置
+    signingConfigs {
+        release {
+            storeFile file("./keystore/release.keystore")
+            storePassword "testres"
+            keyAlias "testres"
+            keyPassword "testres"
+            v2SigningEnabled false
+        }
+
+        debug {
+            storeFile file("./keystore/debug.keystore")
+        }
     }
 }
 
@@ -46,13 +66,13 @@ dependencies {
 
     //ijkplayer
 
-    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
-    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
 
-    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.8'
-    compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.8'
-    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.8'
-    compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
 
   // ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
@@ -60,4 +80,13 @@ dependencies {
   // 滴滴调试工具
     debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:1.2.1'
     releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.2.0'
+
+    //tinker
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.1'
+    // debugImplementation，因为LeakCanary应该只在调试版本中运行。
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.1'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.1'
 }

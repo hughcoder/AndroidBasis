@@ -7,14 +7,15 @@
 
          function callAndroid(){
         // 由于对象映射，所以调用test对象等于调用Android映射的对象
-            <!--test.hello("js调用了android中的hello方法");-->
-                 /*约定的url协议为：js://webview?arg1=111&arg2=222*/
-            document.location = "js://webview?arg1=111&arg2=222";
+            test.hello("js调用了android中的hello方法");
+
+             /*约定的url协议为：js://webview?arg1=111&arg2=222*/
+<!--            document.location = "js://webview?arg1=111&arg2=222";-->
          }
       </script>
 </head>
 <body>
 <!--//点击按钮则调用callAndroid函数-->
-<button type="button" id="button1" onclick="callAndroid()">点击调用Android代码</button>
+<button type="button" id="button1" onclick="callAndroid()" >点击调用Android代码</button>
 </body>
 </html>

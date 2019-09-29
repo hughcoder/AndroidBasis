@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <View
+        android:id="@+id/view_mask_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_video_mask"
+        app:layout_constraintBottom_toTopOf="@+id/module_lightlessonGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_back_white"
+        app:layout_constraintBottom_toTopOf="@+id/module_lightlessonGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/module_lightlessonGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="70dp" />
+
+    <TextView
+        android:id="@+id/tv_video_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/module_lightlessonGuideline"
+        app:layout_constraintStart_toEndOf="@+id/img_back"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="标题" />
+
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/module_lightlessonGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="60dp" />
+
+    <View
+        android:id="@+id/view_mask_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_video_mask"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/exo_progress" />
+
+    <ImageButton
+        android:id="@id/exo_play"
+        style="@style/ExoMediaButton.Play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/module_lightlessonGuideline2"/>
+
+    <ImageButton
+        android:id="@id/exo_pause"
+        style="@style/ExoMediaButton.Pause"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/module_lightlessonGuideline2"/>
+
+    <TextView
+        android:id="@+id/exo_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/module_lightlessonGuideline2"
+        tools:text="00:11" />
+
+    <TextView
+        android:id="@+id/tv_duration_split"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/exo_position"
+        app:layout_constraintTop_toTopOf="@+id/module_lightlessonGuideline2"
+        android:text="/"
+        android:textSize="13sp"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@id/exo_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_duration_split"
+        app:layout_constraintTop_toTopOf="@+id/module_lightlessonGuideline2"
+        android:textSize="13sp"
+        android:textColor="#FFFFFF"
+        tools:text="11:00"/>
+
+    <TextView
+        android:id="@+id/tv_speed"
+        android:layout_width="43dp"
+        android:layout_height="22dp"
+        android:gravity="center"
+        android:text="速度"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/module_lightlessonGuideline4"
+        app:layout_constraintStart_toStartOf="@+id/module_lightlessonGuideline4"
+        app:layout_constraintTop_toTopOf="@+id/module_lightlessonGuideline2"
+        app:layout_constraintVertical_bias="0.52"
+        tools:background="@drawable/oval_c1" />
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="43dp"
+        android:layout_height="22dp"
+        android:gravity="center"
+        android:text="小标题"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/module_lightlessonGuideline3"
+        app:layout_constraintStart_toStartOf="@+id/module_lightlessonGuideline3"
+        app:layout_constraintTop_toTopOf="@+id/module_lightlessonGuideline2"
+        tools:background="oval_c1" />
+
+    <com.google.android.exoplayer2.ui.DefaultTimeBar
+        android:id="@+id/exo_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:played_color="@color/c1"
+        app:buffered_color="@color/c6"
+        app:unplayed_color="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/module_lightlessonGuideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:progress="30" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/module_lightlessonGuideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="40dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/module_lightlessonGuideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="100dp" />
+
+</android.support.constraint.ConstraintLayout>

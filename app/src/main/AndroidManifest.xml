@@ -62,6 +62,11 @@
         <activity android:name=".constraintlayout.ConstraintLayoutActivity"/>
         <activity android:name=".rvlooper.LooperActivity"/>
         <activity android:name=".footer.HeaderAndFooterActivity"/>
+        <activity android:name=".activities.TransParentActivity"
+            android:theme="@style/dialog_activity"
+            />
+        <activity android:name=".leakcanary.LeakActivity"/>
+        <activity android:name=".exoplayer.ExoPlayerActivity"/>
 
     </application>
 

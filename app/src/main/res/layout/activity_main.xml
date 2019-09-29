@@ -154,6 +154,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="进去recyclerview添加头部和尾部adapter" />
+        <com.hugh.basis.common.ui.CustomRoundAngleImageView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/iv_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="centerCrop"
+            android:src="@color/background_error"
+            tools:src="@mipmap/ic_launcher"/>
+
+        <Button
+            android:id="@+id/btn_transparent_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="弹出透明的activity" />
+
+        <Button
+            android:id="@+id/btn_leakcanary_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内存泄漏的activity" />
+        <Button
+            android:id="@+id/btn_exoplayer_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入exoplayer播放器页面" />
 
     </LinearLayout>
 </ScrollView>

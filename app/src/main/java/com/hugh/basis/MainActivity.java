@@ -23,12 +23,15 @@ import com.hugh.basis.MediaPlay.MediaPlayActivity;
 import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.activities.ListActivity;
+import com.hugh.basis.activities.TransParentActivity;
 import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.constraintlayout.ConstraintLayoutActivity;
 import com.hugh.basis.dialog.DialogShowActivity;
 import com.hugh.basis.eventbus.EventActivity1;
+import com.hugh.basis.exoplayer.ExoPlayerActivity;
 import com.hugh.basis.footer.HeaderAndFooterActivity;
 import com.hugh.basis.ijkplayer.PlayActivity;
+import com.hugh.basis.leakcanary.LeakActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.rvlooper.LooperActivity;
 import com.hugh.basis.services.TestOneService;
@@ -247,6 +250,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        findViewById(R.id.btn_transparent_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TransParentActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        findViewById(R.id.btn_leakcanary_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LeakActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         linearLayout = findViewById(R.id.ll_contain);
 
@@ -390,6 +410,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(MainActivity.this, HeaderAndFooterActivity.class);
+                startActivity(intent2);
+            }
+        });
+
+        findViewById(R.id.btn_exoplayer_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, ExoPlayerActivity.class);
                 startActivity(intent2);
             }
         });

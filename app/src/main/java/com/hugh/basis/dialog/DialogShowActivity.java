@@ -77,5 +77,41 @@ public class DialogShowActivity extends AppCompatActivity {
             }
         });
 
+        showDialog();
+
+    }
+
+    private void showDialog(){
+        selfDialog = new SelfDialog(DialogShowActivity.this);
+        selfDialog.setTitle("提示");
+        selfDialog.setMessage("确定退出应用?");
+        selfDialog.setYesOnclickListener("确定", new SelfDialog.onYesOnclickListener() {
+            @Override
+            public void onYesClick() {
+                Toast.makeText(DialogShowActivity.this, "点击了--确定--按钮", Toast.LENGTH_LONG).show();
+                selfDialog.dismiss();
+            }
+        });
+        selfDialog.setNoOnclickListener("取消", new SelfDialog.onNoOnclickListener() {
+            @Override
+            public void onNoClick() {
+                Toast.makeText(DialogShowActivity.this, "点击了--取消--按钮", Toast.LENGTH_LONG).show();
+                selfDialog.dismiss();
+            }
+        });
+        selfDialog.show();
+
+        dialog = new TeenagerTipDialog();
+        dialog.setOnclickListener(new TeenagerTipDialog.onDialogClickListener() {
+            @Override
+            public void onSettingClick() {
+            }
+
+            @Override
+            public void onDialogOffClick() {
+                dialog.dismiss();
+            }
+        });
+        dialog.show(getSupportFragmentManager(),"custom");
     }
 }

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,13 +57,14 @@ public class TeenagerTipDialog extends DialogFragment {
         RelativeLayout rootView = (RelativeLayout) inflater.inflate(R.layout.dialog_teenager_tip, container, false);
         btn_off = rootView.findViewById(R.id.btn_dialog_off);
         mLayoutSetting = rootView.findViewById(R.id.teenage_setting);
-        getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
-            @Override
-            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    return true;
-                }
-                return false;
+
+        this.getDialog().setOnKeyListener(new DialogInterface.OnKeyListener(){
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event){
+                if (keyCode == KeyEvent.KEYCODE_SEARCH) {
+                    Log.e("aaa", "bbb");
+                    return false; // pretend we've processed it
+                }else
+                    return false; // pass on to be processed as normal
             }
         });
 
@@ -84,6 +86,13 @@ public class TeenagerTipDialog extends DialogFragment {
             }
         });
         return rootView;
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+//        getActivity().finish();
     }
 
     public interface onDialogClickListener {

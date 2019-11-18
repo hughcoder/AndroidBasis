@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,15 +31,20 @@ import com.hugh.basis.dialog.DialogShowActivity;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.exoplayer.ExoPlayerActivity;
 import com.hugh.basis.footer.HeaderAndFooterActivity;
+import com.hugh.basis.highOrderUI.UiActivity;
+import com.hugh.basis.hook.HookTestActivity;
 import com.hugh.basis.ijkplayer.PlayActivity;
 import com.hugh.basis.leakcanary.LeakActivity;
+import com.hugh.basis.record.RecordActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.rvlooper.LooperActivity;
 import com.hugh.basis.services.TestOneService;
+import com.hugh.basis.thread.ThreadTestAcitivity;
 import com.hugh.basis.timer.TimerActivity;
 import com.hugh.basis.videoView.VideoViewActivity;
 import com.hugh.basis.viewpager.ViewPagerActivity;
 import com.hugh.basis.webView.WebViewActivity;
+import com.tencent.tinker.lib.tinker.TinkerInstaller;
 
 
 import java.io.IOException;
@@ -71,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button5;
     private int ppp;
     private TextView mTvMsg;
+    private TextView show;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -114,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 //                Log.e("b", height + "");
             }
         });
+        show = findViewById(R.id.tv_show);
 
         List a = new ArrayList();
         a.size();
@@ -422,21 +430,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Log.e("aaa ----pppp",ppp+"");
-//        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
+        findViewById(R.id.tv_load_patch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(),
+                        Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip.apk");
+            }
+        });
 
-//        Log.e("aaa","111111");
-//        String a = "";
-//        if(a.equals("")){
-//            throw new IllegalArgumentException("类型错误！");
-//        }
-//        Log.e("aaa","222222222");
+        findViewById(R.id.tv_text_patch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show.setText("测试结果："+"bug");
+            }
+        });
+
+        findViewById(R.id.tv_go_record).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               startActivity(new Intent(MainActivity.this, RecordActivity.class));
+            }
+        });
+
+        findViewById(R.id.tv_go_ui).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, UiActivity.class));
+            }
+        });
+
+        findViewById(R.id.tv_go_hook).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, HookTestActivity.class));
+            }
+        });
 
         if(isApkInDebug(this)){
             mTvMsg.setText("这是debug打开状态");
         }else{
             mTvMsg.setText("这是debug关闭状态");
         }
+
+        findViewById(R.id.tv_go_thread).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ThreadTestAcitivity.class));
+            }
+        });
     }
 
     /**

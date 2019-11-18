@@ -182,5 +182,48 @@
             android:layout_height="wrap_content"
             android:text="进入exoplayer播放器页面" />
 
+        <Button
+            android:id="@+id/tv_load_patch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载补丁"
+            />
+
+        <Button
+            android:id="@+id/tv_text_patch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试"
+            />
+
+        <TextView
+            android:id="@+id/tv_show"
+            android:text="测试结果"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/tv_go_record"
+            android:text="去录音界面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/tv_go_ui"
+            android:text="去高阶ui界面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/tv_go_hook"
+            android:text="去hook界面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/tv_go_thread"
+            android:text="去线程相关页面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </ScrollView>

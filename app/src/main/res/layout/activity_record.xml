@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="44dp"
+        android:text="录音"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="停止录音"
+        app:layout_constraintLeft_toRightOf="@+id/btn_record"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_compound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="合成音频"
+        app:layout_constraintStart_toStartOf="@+id/btn_record"
+        app:layout_constraintTop_toBottomOf="@+id/btn_record" />
+
+    <Button
+        android:id="@+id/btn_play_old"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="播放原音频"
+        app:layout_constraintStart_toStartOf="@+id/btn_compound"
+        app:layout_constraintTop_toBottomOf="@+id/btn_compound" />
+
+    <Button
+        android:id="@+id/btn_play_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="播放合成音频"
+        app:layout_constraintStart_toStartOf="@+id/btn_play_old"
+        app:layout_constraintTop_toBottomOf="@+id/btn_play_old" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="删除"
+        app:layout_constraintStart_toStartOf="@+id/btn_play_new"
+        app:layout_constraintTop_toBottomOf="@+id/btn_play_new" />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:id="@+id/recordHintTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintStart_toStartOf="@+id/btn_delete"
+        app:layout_constraintTop_toBottomOf="@+id/btn_delete"
+        android:text="点击开始录音"
+        />
+
+    <TextView
+        android:text="11"
+        android:layout_marginTop="20dp"
+        android:id="@+id/recordDurationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recordHintTextView"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/recordHintTextView"
+        app:layout_constraintTop_toBottomOf="@+id/recordHintTextView" />
+
+</android.support.constraint.ConstraintLayout>

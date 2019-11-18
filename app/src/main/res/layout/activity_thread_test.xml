@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:text="创建线程"
+        android:id="@+id/tv_create_thread"
+        android:layout_width="50dp"
+        android:layout_height="80dp"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:text="获取所有线程数"
+        android:id="@+id/tv_get_thread"
+        android:layout_width="50dp"
+        android:layout_height="80dp"/>
+
+    <Button
+        android:id="@+id/btn_trace_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启trace"/>
+
+    <Button
+        android:id="@+id/btn_trace_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关闭trace"/>
+
+    <Button
+        android:id="@+id/tv_test_systrace"
+        android:text="systrace使用"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

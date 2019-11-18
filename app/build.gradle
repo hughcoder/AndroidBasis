@@ -83,6 +83,7 @@ dependencies {
 
     //tinker
     implementation 'com.tencent.tinker:tinker-android-lib:1.9.1'
+    annotationProcessor 'com.tencent.tinker:tinker-android-anno:1.9.1'
     // debugImplementation，因为LeakCanary应该只在调试版本中运行。
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'

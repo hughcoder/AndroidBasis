@@ -9,6 +9,8 @@ import android.util.Log;
 import com.didichuxing.doraemonkit.DoraemonKit;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.tencent.tinker.lib.tinker.TinkerInstaller;
+import com.tencent.tinker.loader.app.TinkerApplication;
 
 /**
  * Created by {chenyouwei}
@@ -19,6 +21,8 @@ public class HughApplication extends Application {
     private static final String TAG = HughApplication.class.getSimpleName();
     private RefWatcher refWatcher;
 
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -27,6 +31,12 @@ public class HughApplication extends Application {
         refWatcher= setupLeakCanary();
         Log.e(TAG, "onCreate : getProcessName:" );
         Log.e(TAG,"isDebug"+isApkInDebug(this));
+
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
     }
 
     private RefWatcher setupLeakCanary() {

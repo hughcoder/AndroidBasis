@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,4 +18,44 @@
         android:layout_height="wrap_content"
         android:text="点击"
         />
+    <com.hugh.basis.common.ui.DragView
+        android:background="@color/c2"
+        android:visibility="gone"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <com.hugh.basis.common.ui.DragView2
+        android:visibility="gone"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/c4"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击苹果出现缩放动画"/>
+    <ImageView
+        android:id="@+id/iv_img1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/apple"/>
+
+    <Button
+        android:id="@+id/btn_translate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="android位移动画"/>
+    <Button
+        android:id="@+id/btn_final"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:text="android位移动画后位置!"/>
+
+    <Button
+        android:id="@+id/btn_alpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击透明度动画"/>
 </LinearLayout>

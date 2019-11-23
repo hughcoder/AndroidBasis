@@ -20,12 +20,23 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btn_goto_puzzle"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="进入拼图" />
 
         <Button
             android:id="@+id/btn_goto"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="进入动画相关Activity" />
+
+        <Button
+            android:id="@+id/btn_goList"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="进入List相关Activity" />
 
         <Button
             android:id="@+id/btn_goself"

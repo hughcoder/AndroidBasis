@@ -35,6 +35,7 @@ import com.hugh.basis.highOrderUI.UiActivity;
 import com.hugh.basis.hook.HookTestActivity;
 import com.hugh.basis.ijkplayer.PlayActivity;
 import com.hugh.basis.leakcanary.LeakActivity;
+import com.hugh.basis.puzzleGame.PuzzleActivity;
 import com.hugh.basis.record.RecordActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.rvlooper.LooperActivity;
@@ -219,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.e(TAG, "uUserID " + UserManager.uUserId);
 
+
         if (savedInstanceState != null) {
             String test = savedInstanceState.getString("extra_test");
             Log.e(TAG, "test:" + test);
@@ -228,14 +230,30 @@ public class MainActivity extends AppCompatActivity {
         mTvMsg = findViewById(R.id.tv_hello_world);
         button = findViewById(R.id.btn_goto);
 
+        findViewById(R.id.btn_goto_puzzle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PuzzleActivity.class);
+                startActivity(intent);
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListActivity.class);
-//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-//                Intent intent = new Intent(MainActivity.this, AnimationActivity.class);
 
+//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, AnimationActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btn_goList).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 startActivity(intent);
             }
         });
@@ -441,14 +459,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv_text_patch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                show.setText("测试结果："+"bug");
+                show.setText("测试结果：" + "bug");
             }
         });
 
         findViewById(R.id.tv_go_record).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(MainActivity.this, RecordActivity.class));
+                startActivity(new Intent(MainActivity.this, RecordActivity.class));
             }
         });
 
@@ -466,9 +484,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(isApkInDebug(this)){
+        if (isApkInDebug(this)) {
             mTvMsg.setText("这是debug打开状态");
-        }else{
+        } else {
             mTvMsg.setText("这是debug关闭状态");
         }
 

@@ -1,16 +1,16 @@
 package com.hugh.basis.animate;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -33,8 +33,8 @@ public class AnimationActivity extends AppCompatActivity {
     private int mTranlateX;
     private int mTranslateY;
     private Button mBtnAlpha;
-    private ImageView mIv1;
-    private ImageView mIv2;
+    private Button mBtnRolate;
+    private Button mBtnDrawable;
 
 
     @Override
@@ -47,10 +47,18 @@ public class AnimationActivity extends AppCompatActivity {
         mBtnTranslate = findViewById(R.id.btn_translate);
         mBtnAlpha = findViewById(R.id.btn_alpha);
         mIvImg = findViewById(R.id.iv_img1);
+        mBtnRolate = findViewById(R.id.btn_rolate);
+        mBtnDrawable = findViewById(R.id.btn_drawable);
+        findViewById(R.id.btn_go).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AnimationActivity.this,AnimatorActivity.class));
+            }
+        });
         mIvImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //缩放动化
+                //缩放动画
                 startScaleAnimation();
             }
         });
@@ -58,15 +66,21 @@ public class AnimationActivity extends AppCompatActivity {
         mBtnTranslate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                translate(mBtnTranslate);
+                translateAnimation(mBtnTranslate);
             }
         });
 
-//        ObjectAnimator.ofFloat(mButton, "translationY", 800).start();
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ObjectAnimator.ofInt(mButton, "width", 500).setDuration(5000).start();
+            }
+        });
+
+        mBtnDrawable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawableAnimation();
             }
         });
 
@@ -96,35 +110,18 @@ public class AnimationActivity extends AppCompatActivity {
             }
         });
 
-        mIv1 = findViewById(R.id.iv_img_4);
-        mIv2 = findViewById(R.id.iv_move_3);
-        ViewTreeObserver observer3 = mIv1.getViewTreeObserver();
-        observer3.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        mBtnRolate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onGlobalLayout() {
-                mBtnTranslate.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                Log.e("aaa",mIv1.getWidth()+"getWidth---mIv1");
-                Log.e("aaa",mIv1.getHeight()+"getHeight---mIv1");
+            public void onClick(View view) {
+                rolateAnimation(mBtnRolate);
             }
         });
-        ViewTreeObserver observer4 = mIv2.getViewTreeObserver();
-        observer4.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                mBtnTranslate.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                Log.e("aaa",mIv2.getWidth()+"getWidth---mIv2");
-                Log.e("aaa",mIv2.getHeight()+"getHeight---mIv2");
-            }
-        });
+
+
     }
 
 
-    public void translate(View view) {
-        Log.e("aaa","mX-------"+mX);
-        Log.e("aaa","mY-------"+mY);
-
-        Log.e("aaa","mTranlateX-------"+mTranlateX);
-        Log.e("aaa","mTranslateY-------"+mTranslateY);
+    public void translateAnimation(View view) {
         TranslateAnimation translateAnimation = new TranslateAnimation(0, mX-mTranlateX, 0, mY-mTranslateY);
         translateAnimation.setDuration(2000);
 //        view.setAnimation(translateAnimation);
@@ -137,7 +134,7 @@ public class AnimationActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 mBtnFinal.setVisibility(View.VISIBLE);
-                view.setVisibility(View.GONE);
+//                view.setVisibility(View.GONE);
             }
 
             @Override
@@ -172,9 +169,6 @@ public class AnimationActivity extends AppCompatActivity {
         });
         mBtnAlpha.startAnimation(alphaAnimation);
 
-//        mBtnAlpha.setBackgroundResource(R.drawable.frame_animation);
-//        AnimationDrawable drawable = (AnimationDrawable) mBtnAlpha.getBackground();
-//        drawable.start();
     }
 
 
@@ -234,6 +228,20 @@ public class AnimationActivity extends AppCompatActivity {
 //        mIvImg.clearAnimation();
         //同样cancel（）也能取消掉动画
 //        scaleAnimation2.cancel();
+    }
+
+    private void rolateAnimation(View view) {
+        RotateAnimation animation = new RotateAnimation(0, 360f, Animation.RELATIVE_TO_SELF,
+                0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(2000);
+        animation.setFillAfter(true);//动画结束是否保持动画结束的样式
+        view.startAnimation(animation);
+    }
+
+    private void drawableAnimation(){
+        mBtnDrawable.setBackgroundResource(R.drawable.frame_animation);
+        AnimationDrawable drawable = (AnimationDrawable) mBtnDrawable.getBackground();
+        drawable.start();
     }
 
     @Override

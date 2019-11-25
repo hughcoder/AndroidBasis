@@ -19,17 +19,6 @@
         android:layout_height="wrap_content"
         android:text="点击"
         />
-    <com.hugh.basis.common.ui.DragView
-        android:background="@color/c2"
-        android:visibility="gone"
-        android:layout_width="80dp"
-        android:layout_height="80dp"/>
-
-    <com.hugh.basis.common.ui.DragView2
-        android:visibility="gone"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@color/c4"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,16 +49,21 @@
         android:layout_height="wrap_content"
         android:text="点击透明度动画"/>
 
-    <ImageView
-        android:id="@+id/iv_img_4"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-          android:background="@color/background_error"
-        android:scaleType="fitXY" />
-    <ImageView
-        android:id="@+id/iv_move_3"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:background="@color/c1"
-        android:scaleType="fitXY" />
+    <Button
+        android:id="@+id/btn_rolate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="旋转动画"/>
+
+    <Button
+        android:id="@+id/btn_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="帧动画"/>
+
+    <Button
+        android:id="@+id/btn_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="去属性动画"/>
 </LinearLayout>

@@ -25,6 +25,7 @@ import com.hugh.basis.activities.BindServiceActivity;
 import com.hugh.basis.activities.FragmentActivity;
 import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.activities.TransParentActivity;
+import com.hugh.basis.animate.AnimationActivity;
 import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.constraintlayout.ConstraintLayoutActivity;
 import com.hugh.basis.dialog.DialogShowActivity;

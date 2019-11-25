@@ -1,4 +1,4 @@
-package com.hugh.basis;
+package com.hugh.basis.animate;
 
 import android.animation.ObjectAnimator;
 import android.graphics.drawable.AnimationDrawable;
@@ -15,6 +15,8 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.hugh.basis.R;
 
 /**
  * Created by {chenyouwei}

@@ -41,7 +41,7 @@
             android:configChanges="orientation|keyboardHidden"
             />
         <activity
-            android:name=".AnimationActivity"
+            android:name=".animate.AnimationActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="standard" />
         <activity

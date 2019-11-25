@@ -31,6 +31,8 @@ public class AnimationActivity extends AppCompatActivity {
     private int mTranlateX;
     private int mTranslateY;
     private Button mBtnAlpha;
+    private ImageView mIv1;
+    private ImageView mIv2;
 
 
     @Override
@@ -89,6 +91,27 @@ public class AnimationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alphaAnimation();
+            }
+        });
+
+        mIv1 = findViewById(R.id.iv_img_4);
+        mIv2 = findViewById(R.id.iv_move_3);
+        ViewTreeObserver observer3 = mIv1.getViewTreeObserver();
+        observer3.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                mBtnTranslate.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                Log.e("aaa",mIv1.getWidth()+"getWidth---mIv1");
+                Log.e("aaa",mIv1.getHeight()+"getHeight---mIv1");
+            }
+        });
+        ViewTreeObserver observer4 = mIv2.getViewTreeObserver();
+        observer4.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                mBtnTranslate.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                Log.e("aaa",mIv2.getWidth()+"getWidth---mIv2");
+                Log.e("aaa",mIv2.getHeight()+"getHeight---mIv2");
             }
         });
     }

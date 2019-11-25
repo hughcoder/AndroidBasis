@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -36,8 +37,8 @@
         android:text="点击苹果出现缩放动画"/>
     <ImageView
         android:id="@+id/iv_img1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/apple"/>
 
     <Button
@@ -58,4 +59,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="点击透明度动画"/>
+
+    <ImageView
+        android:id="@+id/iv_img_4"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+          android:background="@color/background_error"
+        android:scaleType="fitXY" />
+    <ImageView
+        android:id="@+id/iv_move_3"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:background="@color/c1"
+        android:scaleType="fitXY" />
 </LinearLayout>

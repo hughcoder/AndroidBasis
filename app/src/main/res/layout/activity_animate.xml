@@ -60,7 +60,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="帧动画"/>
-
+    <Button
+        android:id="@+id/btn_trans_scale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击同时移动和变化大小"/>
     <Button
         android:id="@+id/btn_go"
         android:layout_width="wrap_content"

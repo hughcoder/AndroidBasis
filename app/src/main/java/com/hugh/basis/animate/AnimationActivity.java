@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
@@ -35,6 +38,7 @@ public class AnimationActivity extends AppCompatActivity {
     private Button mBtnAlpha;
     private Button mBtnRolate;
     private Button mBtnDrawable;
+    private Button mBtnTranslateWithScale;
 
 
     @Override
@@ -49,6 +53,7 @@ public class AnimationActivity extends AppCompatActivity {
         mIvImg = findViewById(R.id.iv_img1);
         mBtnRolate = findViewById(R.id.btn_rolate);
         mBtnDrawable = findViewById(R.id.btn_drawable);
+        mBtnTranslateWithScale = findViewById(R.id.btn_trans_scale);
         findViewById(R.id.btn_go).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,13 +122,32 @@ public class AnimationActivity extends AppCompatActivity {
             }
         });
 
+        mBtnTranslateWithScale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                translateWithScale(mBtnTranslateWithScale);
+            }
+        });
 
+
+    }
+
+    private void translateWithScale(View view){
+        TranslateAnimation translateAnimation = new TranslateAnimation(0,200,0,0);
+        Animation mScaleAnimation = new ScaleAnimation(0.5f, 1.0f, 0.5f,1.0f);
+        AnimationSet animationSet =new AnimationSet(false);
+        animationSet.addAnimation(translateAnimation);
+        animationSet.addAnimation(mScaleAnimation);
+        animationSet.setDuration(4000);
+        animationSet.setFillAfter(true);
+        view.startAnimation(animationSet);
     }
 
 
     public void translateAnimation(View view) {
         TranslateAnimation translateAnimation = new TranslateAnimation(0, mX-mTranlateX, 0, mY-mTranslateY);
         translateAnimation.setDuration(2000);
+        translateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
 //        view.setAnimation(translateAnimation);
         translateAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override

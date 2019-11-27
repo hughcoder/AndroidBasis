@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".HughApplication"
@@ -78,6 +81,7 @@
         <activity android:name=".thread.ThreadTestAcitivity"/>
         <activity android:name=".puzzleGame.PuzzleActivity"/>
         <activity android:name=".animate.AnimatorActivity"/>
+        <activity android:name=".eyeshield.EyeProtectActivity"/>
     </application>
 
 

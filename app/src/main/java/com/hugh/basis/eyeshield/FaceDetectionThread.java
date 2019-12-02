@@ -72,11 +72,11 @@ public class FaceDetectionThread extends Thread {
 		// Rotate the so it siuts our portrait mode
 		Matrix matrix = new Matrix();
 		matrix.postRotate(90);
-		matrix.preScale(-1, 1);
+		matrix.preScale(-1, 1);  //Android内置人脸识别的图像必须是头在上,所以要做旋转变换
 		// We rotate the same Bitmap
 		_currentFrame = Bitmap.createBitmap(_currentFrame, 0, 0,
 				_previewSize.width, _previewSize.height, matrix, false);
-
+		Log.e("run","previewSize.width"+_previewSize.width+"_previewSize.height"+_previewSize.height);
 		Log.i("Timing",
 				"Rotate, Create finished: " + (System.currentTimeMillis() - t));
 		t = System.currentTimeMillis();
@@ -86,6 +86,8 @@ public class FaceDetectionThread extends Thread {
 			return;
 		}
 
+//		Log.e("aaa","_currentFrame.getWidth()"+_currentFrame.getWidth());
+//		Log.e("aaa","_currentFrame.getHeight(),"+_currentFrame.getHeight());
 		FaceDetector d = new FaceDetector(_currentFrame.getWidth(),
 				_currentFrame.getHeight(), 1);
 

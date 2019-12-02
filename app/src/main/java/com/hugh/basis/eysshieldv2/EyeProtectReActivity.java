@@ -22,6 +22,7 @@ import android.os.HandlerThread;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -100,6 +101,9 @@ public class EyeProtectReActivity extends Activity implements MessageListener {
     @Override
     public void onResume() {
         super.onResume();
+
+        Log.e("aaa ==widthPixels", EyeProtectReActivity.this.getResources().getDisplayMetrics().widthPixels+"");
+        Log.e("aaa ==heightPixels", EyeProtectReActivity.this.getResources().getDisplayMetrics().heightPixels+"");
     }
 
     /**

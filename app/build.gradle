@@ -80,6 +80,8 @@ dependencies {
   // 滴滴调试工具
     debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:1.2.1'
     releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.2.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:3.7.0'
 
     //tinker
     implementation 'com.tencent.tinker:tinker-android-lib:1.9.1'

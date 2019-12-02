@@ -24,6 +24,7 @@ import com.hugh.basis.eyeshield.measurement.Point;
 import com.hugh.basis.eyeshield.messages.MeasurementStepMessage;
 import com.hugh.basis.eyeshield.messages.MessageHUB;
 import com.hugh.basis.eyeshield.utils.Util;
+import com.hugh.basis.eysshieldv2.EyeProtectReActivity;
 
 
 public class CameraSurfaceView extends SurfaceView implements Callback,
@@ -72,7 +73,8 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 	// private boolean _measurementStartet = false;
 	private boolean _calibrated = false;
 	private boolean _calibrating = false;
-	private int _calibrationsLeft = -1;
+	private int _calibrationsLeft = -1; //用来测量的次数
+	public boolean isStart = false;
 
 	public CameraSurfaceView(final Context context, final AttributeSet attrs) {
 		super(context, attrs);
@@ -93,6 +95,8 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 			requestLayout();
 
 			Parameters params = mCamera.getParameters();
+			//这个方法仅仅是修改相机的预览方向，不会影响到PreviewCallback回调、生成的JPEG图片和录像视频的方向，这些数据的方向会和图像Sensor方向一致。
+			//
 			camera.setDisplayOrientation(90);
 			List<String> focusModes = params.getSupportedFocusModes();
 			if (focusModes.contains(Parameters.FOCUS_MODE_AUTO)) {
@@ -123,19 +127,22 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 		if (_foundFace != null) {
 
 			_foundFace.getMidPoint(_middlePoint);
+			Log.e("onDraw","开始了---->");
 
-			Log.i("Camera", _middlePoint.x + " : " + _middlePoint.y);
+			Log.e("onDraw", "_middlePoint---->"+_middlePoint.x + " : " + _middlePoint.y);
 
-			// portrait mode!
-			float heightRatio = canvas.getHeight() / (float) _previewSize.width;
-			float widthRatio = canvas.getWidth() / (float) _previewSize.height;
+			// portrait mode!  canvas.getHeight() 是surfaceView的高度
+			float heightRatio = canvas.getHeight() / (float) _previewSize.height;
+			float widthRatio = canvas.getWidth() / (float) _previewSize.width;
 
-			Log.i("Drawcall", _middlePoint.x + " : " + _middlePoint.y);
+			Log.e("onDraw", "canvas---->"+canvas.getWidth()  + " :  height:" +canvas.getHeight());
+
+			Log.e("onDraw", "_previewSize"+_previewSize.width + " : height: " + _previewSize.height);
 
 			int realX = (int) (_middlePoint.x * widthRatio);
 			int realY = (int) (_middlePoint.y * heightRatio);
 
-			Log.i("Drawcall", "Real :" + realX + " : " + realY);
+			Log.i("onDraw", "Real :" + realX + " : " + realY);
 			int halfEyeDist = (int) (widthRatio * _foundFace.eyesDistance() / 2);
 
 			if (_showTracking) {
@@ -285,7 +292,7 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 			}
 
 			_currentFaceDetectionThread = new FaceDetectionThread(data,
-					_previewSize);
+					_previewSize); //_previewSize 该手机最适合的长宽
 			_currentFaceDetectionThread.start();
 
 			invalidate();
@@ -350,20 +357,19 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 		} catch (Exception e) {
 			// ignore: tried to stop a non-existent preview
 		}
+		if(isStart){
+			Parameters parameters = mCamera.getParameters();
+			_previewSize = parameters.getPreviewSize();
 
-		Parameters parameters = mCamera.getParameters();
-		_previewSize = parameters.getPreviewSize();
-		// mCamera.setDisplayOrientation(90);
-		// mCamera.setParameters(parameters);
+			// start preview with new settings
+			try {
+				mCamera.setPreviewDisplay(mHolder);
+				mCamera.startPreview();
+				mCamera.setPreviewCallback(this);
 
-		// start preview with new settings
-		try {
-			mCamera.setPreviewDisplay(mHolder);
-			mCamera.startPreview();
-			mCamera.setPreviewCallback(this);
-
-		} catch (Exception e) {
-			Log.d("This", "Error starting camera preview: " + e.getMessage());
+			} catch (Exception e) {
+				Log.d("This", "Error starting camera preview: " + e.getMessage());
+			}
 		}
 	}
 }

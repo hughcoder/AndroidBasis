@@ -82,7 +82,8 @@
         <activity android:name=".puzzleGame.PuzzleActivity"/>
         <activity android:name=".animate.AnimatorActivity"/>
         <activity android:name=".eyeshield.EyeProtectActivity"/>
-        <activity android:name=".eysshieldv2.EyeProtectReActivity"/>
+        <activity android:name=".eysshieldv2.EyeProtectReActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 

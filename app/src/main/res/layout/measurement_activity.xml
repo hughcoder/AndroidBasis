@@ -44,6 +44,14 @@
         android:onClick="pressedReset"
         android:text="@string/reset" />
 
+    <Button
+        android:id="@+id/camera_start"
+        android:text="点击开始"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

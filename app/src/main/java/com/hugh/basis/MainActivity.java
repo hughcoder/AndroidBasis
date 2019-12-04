@@ -27,12 +27,14 @@ import com.hugh.basis.activities.ListActivity;
 import com.hugh.basis.activities.TransParentActivity;
 import com.hugh.basis.animate.AnimationActivity;
 import com.hugh.basis.binder.UserManager;
+import com.hugh.basis.camera2face.Camera2FaceActivity;
 import com.hugh.basis.constraintlayout.ConstraintLayoutActivity;
 import com.hugh.basis.dialog.DialogShowActivity;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.exoplayer.ExoPlayerActivity;
 import com.hugh.basis.eyeshield.EyeProtectActivity;
 import com.hugh.basis.eysshieldv2.EyeProtectReActivity;
+import com.hugh.basis.eysshieldv2.testcamera2.TestCamera2;
 import com.hugh.basis.footer.HeaderAndFooterActivity;
 import com.hugh.basis.highOrderUI.UiActivity;
 import com.hugh.basis.hook.HookTestActivity;
@@ -511,6 +513,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, EyeProtectReActivity.class));
+            }
+        });
+        findViewById(R.id.tv_go_camera2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Camera2FaceActivity.class));
             }
         });
     }

@@ -31,7 +31,7 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 		Camera.PreviewCallback {
 
 	/**
-	 * Represents the standard height of a peace of a4 paper e.g. 29.7cm
+	 * 代表一张a4纸的标准高度，例如29.7厘米
 	 */
 	public static final int CALIBRATION_DISTANCE_A4_MM = 294;
 
@@ -40,7 +40,7 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 	public static final int AVERAGE_THREASHHOLD = 5;
 
 	/**
-	 * Measured distance at calibration point
+	 * Measured distance at calibration point 校正点的测量距离
 	 */
 	private float _distanceAtCalibrationPoint = -1;
 
@@ -240,7 +240,9 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 		}
 
 		_currentAvgEyeDistance = sum / _points.size();
-
+		Log.e("ccc","_points.size()"+_points.size());
+		Log.e("ccc","_distanceAtCalibrationPoint"+_distanceAtCalibrationPoint);
+		Log.e("ccc","_currentAvgEyeDistance"+_currentAvgEyeDistance);
 		_currentDistanceToFace = CALIBRATION_DISTANCE_A4_MM
 				* (_distanceAtCalibrationPoint / _currentAvgEyeDistance);
 
@@ -264,7 +266,7 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 	public void onPreviewFrame(final byte[] data, final Camera camera) {
 		if (_calibrationsLeft == -1)
 			return;
-
+        Log.e("ccc","_calibrationsLeft 剩余测量次数"+_calibrationsLeft);
 		if (_calibrationsLeft > 0) {
 			// Doing calibration !
 

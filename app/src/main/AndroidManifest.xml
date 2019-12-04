@@ -6,7 +6,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.hardware.camera.autofocus" />
 
@@ -21,8 +23,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
-            android:launchMode="singleTop"
-            >
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,6 +32,7 @@
         </activity>
         <!--顺便加上这个服务，tinker自带的-->
         <service android:name="com.tencent.tinker.lib.service.DefaultTinkerResultService" />
+
         <activity
             android:name=".SecondActivity"
             android:configChanges="screenLayout"
@@ -38,11 +40,10 @@
             android:process=":remote" />
         <activity
             android:name=".ThirdActivity"
-            android:configChanges="screenLayout"
-            />
-        <activity android:name=".ReceiveActivity"
-            android:configChanges="orientation|keyboardHidden"
-            />
+            android:configChanges="screenLayout" />
+        <activity
+            android:name=".ReceiveActivity"
+            android:configChanges="orientation|keyboardHidden" />
         <activity
             android:name=".animate.AnimationActivity"
             android:configChanges="orientation|screenSize"
@@ -51,41 +52,48 @@
             android:name=".activities.FragmentActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="standard" />
-        <service android:name=".services.TestOneService"/>
-        <service android:name=".services.TestTwoService"/>
-        <activity android:name=".activities.BindServiceActivity"/>
-        <activity android:name=".activities.ListActivity"/>
-        <activity android:name=".eventbus.EventActivity1"/>
-        <activity android:name=".eventbus.EventActivity2"/>
-        <activity android:name=".ijkplayer.PlayActivity"/>
-        <activity android:name=".webView.WebViewActivity"/>
-        <activity android:name=".MediaPlay.MediaPlayActivity"/>
-        <activity android:name=".videoView.VideoViewActivity"/>
-        <activity android:name=".retrofit.RetrofitActivity"/>
-        <activity android:name=".timer.TimerActivity"/>
-        <activity android:name=".viewpager.ViewPagerActivity"/>
-        <activity android:name=".activities.ListTimeActivity"/>
-        <activity android:name=".activities.TestLayoutActivity"/>
-        <activity android:name=".dialog.DialogShowActivity"/>
-        <activity android:name=".constraintlayout.ConstraintLayoutActivity"/>
-        <activity android:name=".rvlooper.LooperActivity"/>
-        <activity android:name=".footer.HeaderAndFooterActivity"/>
-        <activity android:name=".activities.TransParentActivity"
-            android:theme="@style/dialog_activity"
-            />
-        <activity android:name=".leakcanary.LeakActivity"/>
-        <activity android:name=".exoplayer.ExoPlayerActivity"/>
-        <activity android:name=".record.RecordActivity"/>
-        <activity android:name=".highOrderUI.UiActivity"/>
-        <activity android:name=".hook.HookTestActivity"/>
-        <activity android:name=".thread.ThreadTestAcitivity"/>
-        <activity android:name=".puzzleGame.PuzzleActivity"/>
-        <activity android:name=".animate.AnimatorActivity"/>
-        <activity android:name=".eyeshield.EyeProtectActivity"/>
-        <activity android:name=".eysshieldv2.EyeProtectReActivity"
-            android:screenOrientation="landscape"/>
-    </application>
 
+        <service android:name=".services.TestOneService" />
+        <service android:name=".services.TestTwoService" />
+
+        <activity android:name=".activities.BindServiceActivity" />
+        <activity android:name=".activities.ListActivity" />
+        <activity android:name=".eventbus.EventActivity1" />
+        <activity android:name=".eventbus.EventActivity2" />
+        <activity android:name=".ijkplayer.PlayActivity" />
+        <activity android:name=".webView.WebViewActivity" />
+        <activity android:name=".MediaPlay.MediaPlayActivity" />
+        <activity android:name=".videoView.VideoViewActivity" />
+        <activity android:name=".retrofit.RetrofitActivity" />
+        <activity android:name=".timer.TimerActivity" />
+        <activity android:name=".viewpager.ViewPagerActivity" />
+        <activity android:name=".activities.ListTimeActivity" />
+        <activity android:name=".activities.TestLayoutActivity" />
+        <activity android:name=".dialog.DialogShowActivity" />
+        <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
+        <activity android:name=".rvlooper.LooperActivity" />
+        <activity android:name=".footer.HeaderAndFooterActivity" />
+        <activity
+            android:name=".activities.TransParentActivity"
+            android:theme="@style/dialog_activity" />
+        <activity android:name=".leakcanary.LeakActivity" />
+        <activity android:name=".exoplayer.ExoPlayerActivity" />
+        <activity android:name=".record.RecordActivity" />
+        <activity android:name=".highOrderUI.UiActivity" />
+        <activity android:name=".hook.HookTestActivity" />
+        <activity android:name=".thread.ThreadTestAcitivity" />
+        <activity android:name=".puzzleGame.PuzzleActivity" />
+        <activity android:name=".animate.AnimatorActivity" />
+        <activity android:name=".eyeshield.EyeProtectActivity" />
+        <activity
+            android:name=".eysshieldv2.EyeProtectReActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".eysshieldv2.testcamera2.TestCamera2" />
+        <activity
+            android:name=".camera2face.Camera2FaceActivity"
+            android:screenOrientation="sensor"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+    </application>
 
 
 </manifest>

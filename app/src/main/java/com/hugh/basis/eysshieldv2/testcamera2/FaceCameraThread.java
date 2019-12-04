@@ -1,7 +1,4 @@
-package com.hugh.basis.eyeshield;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+package com.hugh.basis.eysshieldv2.testcamera2;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,12 +6,15 @@ import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
-import android.hardware.Camera.Size;
 import android.media.FaceDetector;
 import android.media.FaceDetector.Face;
 import android.util.Log;
+import android.util.Size;
 
-public class FaceDetectionThread extends Thread {
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
+public class FaceCameraThread extends Thread {
 
 	public static final String FACEDETECTIONTHREAD_TAG = "FaceDetectionThread_Tag";
 
@@ -23,7 +23,7 @@ public class FaceDetectionThread extends Thread {
 	private final Size _previewSize;
 	private Bitmap _currentFrame;
 
-	public FaceDetectionThread(final byte[] data, final Size previewSize) {
+	public FaceCameraThread(final byte[] data, final Size previewSize) {
 		_data = data;
 		_previewSize = previewSize;
 	}
@@ -45,12 +45,12 @@ public class FaceDetectionThread extends Thread {
 		long t = System.currentTimeMillis();
 
 		YuvImage yuvimage = new YuvImage(_data, ImageFormat.NV21,
-				_previewSize.width, _previewSize.height, null);
+				_previewSize.getWidth(), _previewSize.getHeight(), null);
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		if (!yuvimage.compressToJpeg(new Rect(0, 0, _previewSize.width,
-				_previewSize.height), 100, baos)) {
+		if (!yuvimage.compressToJpeg(new Rect(0, 0, _previewSize.getWidth(),
+				_previewSize.getHeight()), 100, baos)) {
 
 			Log.e("Camera", "compressToJpeg failed");
 
@@ -72,11 +72,11 @@ public class FaceDetectionThread extends Thread {
 		// Rotate the so it siuts our portrait mode
 		Matrix matrix = new Matrix();
 		matrix.postRotate(90);
-		matrix.preScale(1, -1);  //Android内置人脸识别的图像必须是头在上,所以要做旋转变换
+		matrix.preScale(-1, 1);  //Android内置人脸识别的图像必须是头在上,所以要做旋转变换
 		// We rotate the same Bitmap
 		_currentFrame = Bitmap.createBitmap(_currentFrame, 0, 0,
-				_previewSize.width, _previewSize.height, matrix, false);
-		Log.e("run","previewSize.width"+_previewSize.width+"_previewSize.height"+_previewSize.height);
+				_previewSize.getWidth(), _previewSize.getHeight(), matrix, false);
+		Log.e("run","previewSize.width"+_previewSize.getWidth()+"_previewSize.height"+_previewSize.getHeight());
 		Log.i("Timing",
 				"Rotate, Create finished: " + (System.currentTimeMillis() - t));
 		t = System.currentTimeMillis();
@@ -100,8 +100,5 @@ public class FaceDetectionThread extends Thread {
 
 		_currentFace = faces[0];
 		Log.d(FACEDETECTIONTHREAD_TAG, "Found: " + faces[0] + " Faces");
-		if(faces[0]!=null){
-			Log.e("ddd","faces[0].eyesDistance()"+faces[0].eyesDistance());
-		}
 	}
 }

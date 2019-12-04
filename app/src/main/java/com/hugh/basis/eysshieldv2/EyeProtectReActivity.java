@@ -126,6 +126,7 @@ public class EyeProtectReActivity extends Activity implements MessageListener {
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+                Log.e("aaa","surfaceChanged");
             }
 
             @Override

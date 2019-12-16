@@ -45,14 +45,14 @@
 
         <Button
             android:id="@+id/btn_goto"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="进入动画相关Activity" />
 
         <Button
             android:id="@+id/btn_goList"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="进入List相关Activity" />
 
         <Button
@@ -63,8 +63,8 @@
 
         <RelativeLayout
             android:id="@+id/btn_View"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark">
 
             <TextView
@@ -94,7 +94,7 @@
         <com.hugh.basis.View.CircleView
             android:id="@+id/circleView"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:layout_margin="20dp"
             android:background="#000000"
             android:padding="20dp"

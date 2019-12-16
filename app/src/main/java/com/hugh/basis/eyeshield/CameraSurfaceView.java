@@ -229,7 +229,11 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 				CALIBRATION_DISTANCE_A4_MM
 						* (_distanceAtCalibrationPoint / _foundFace
 								.eyesDistance())));
-
+		Log.e("ccc","_points-_foundFace.eyesDistance()--:"+_foundFace.eyesDistance());
+		Log.e("ccc","_points_distanceAtCalibrationPoint--:"+_distanceAtCalibrationPoint);
+		Log.e("ccc","_points_deviceDistance---:"+CALIBRATION_DISTANCE_A4_MM
+				* (_distanceAtCalibrationPoint / _foundFace
+				.eyesDistance()));
 		while (_points.size() > _threashold) {
 			_points.remove(0);
 		}
@@ -240,12 +244,9 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 		}
 
 		_currentAvgEyeDistance = sum / _points.size();
-		Log.e("ccc","_points.size()"+_points.size());
-		Log.e("ccc","_distanceAtCalibrationPoint"+_distanceAtCalibrationPoint);
-		Log.e("ccc","_currentAvgEyeDistance"+_currentAvgEyeDistance);
 		_currentDistanceToFace = CALIBRATION_DISTANCE_A4_MM
 				* (_distanceAtCalibrationPoint / _currentAvgEyeDistance);
-
+		Log.e("ccc","---->_currentAvgEyeDistance:"+_currentAvgEyeDistance);
 		_currentDistanceToFace = Util.MM_TO_CM(_currentDistanceToFace);
 
 		MeasurementStepMessage message = new MeasurementStepMessage();
@@ -266,7 +267,6 @@ public class CameraSurfaceView extends SurfaceView implements Callback,
 	public void onPreviewFrame(final byte[] data, final Camera camera) {
 		if (_calibrationsLeft == -1)
 			return;
-        Log.e("ccc","_calibrationsLeft 剩余测量次数"+_calibrationsLeft);
 		if (_calibrationsLeft > 0) {
 			// Doing calibration !
 

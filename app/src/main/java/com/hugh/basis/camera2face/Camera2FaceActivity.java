@@ -41,6 +41,8 @@ import com.hugh.basis.eyeshield.messages.MeasurementStepMessage;
 import com.hugh.basis.eyeshield.messages.MessageHUB;
 import com.hugh.basis.eyeshield.utils.Util;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -93,6 +95,7 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
     private int _threashold = CALIBRATION_MEASUREMENTS;
     private final static DecimalFormat _decimalFormater = new DecimalFormat(
             "0.0");
+    private int _calibrationsLeft = -1; //用来测量的次数
     /**
      * in cm
      */
@@ -137,6 +140,7 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
 
     private void startCalculateDistance(){
         mIsCalibrated = true;
+        _calibrationsLeft = CALIBRATION_MEASUREMENTS;
         _points = new ArrayList<com.hugh.basis.eyeshield.measurement.Point>();
     }
 
@@ -316,24 +320,74 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
                     });
 
                     if(mIsCalibrated){
-                        if (_currentFaceDetectionThread != null
-                                && _currentFaceDetectionThread.isAlive()) {
-                            // Drop Frame
+                        if (_calibrationsLeft == -1)
                             return;
+                        if (_calibrationsLeft > 0) {
+                            // Doing calibration !
+
+                            if (_currentFaceDetectionThread != null
+                                    && _currentFaceDetectionThread.isAlive()) {
+                                // Drop Frame
+                                return;
+                            }
+
+                            // No face detection started or already finished
+//                            _processTimeForLastFrame = System.currentTimeMillis()
+//                                    - _lastFrameStart;
+//                            _lastFrameStart = System.currentTimeMillis();
+
+                            if (_currentFaceDetectionThread != null) {
+                                _calibrationsLeft--;
+                                updateMeasurement(_currentFaceDetectionThread.getCurrentFace());
+
+                                if (_calibrationsLeft == 0) {
+                                    doneCalibrating();
+
+                                    return;
+                                }
+                            }
+
+                            _currentFaceDetectionThread = new FaceCameraThread(nv21,
+                                    previewSize); //_previewSize 该手机最适合的长宽
+                            _currentFaceDetectionThread.start();
+
+                        } else {
+                            // Simple Measurement
+
+                            if (_currentFaceDetectionThread != null
+                                    && _currentFaceDetectionThread.isAlive()) {
+                                // Drop Frame
+                                return;
+                            }
+
+                            // No face detection started or already finished
+//                            _processTimeForLastFrame = System.currentTimeMillis()
+//                                    - _lastFrameStart;
+//                            _lastFrameStart = System.currentTimeMillis();
+
+                            if (_currentFaceDetectionThread != null)
+                                updateMeasurement(_currentFaceDetectionThread.getCurrentFace());
+
+                            _currentFaceDetectionThread = new FaceCameraThread(nv21,
+                                    previewSize); //_previewSize 该手机最适合的长宽
+                            _currentFaceDetectionThread.start();
                         }
-
-
-                        if (_currentFaceDetectionThread != null) {
-                            updateMeasurement(_currentFaceDetectionThread.getCurrentFace());
-                        }
-
-                        _currentFaceDetectionThread = new FaceCameraThread(nv21,
-                                previewSize); //_previewSize 该手机最适合的长宽
-                        _currentFaceDetectionThread.start();
                     }
                 }
             });
         }
+    }
+
+    private void doneCalibrating() {
+//        _calibrated = true;
+//        _calibrating = false;
+        _currentFaceDetectionThread = null;
+        // _measurementStartet = false;
+
+        _threashold = AVERAGE_THREASHHOLD;
+
+        _distanceAtCalibrationPoint = _currentAvgEyeDistance;
+//        MessageHUB.get().sendMessage(MessageHUB.DONE_CALIBRATION, null);
     }
 
     private void updateMeasurement(final FaceDetector.Face currentFace) {
@@ -378,14 +432,19 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
      *
      */
     public void updateUI(final MeasurementStepMessage message) {
-        Log.e("aaa","-------_currentDistanceView"+message.getDistToFace());
-//        _currentDistanceView.setText(_decimalFormater.format(message
-//                .getDistToFace()) + " cm");
-//
-//        float fontRatio = message.getDistToFace() / 29.7f;
-//
-//        _currentDistanceView.setTextSize(fontRatio * 20);
+        Log.e("aaa","updateUI_currentDistanceView"+message.getDistToFace());
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("aaa","runOnUiThread");
+                _currentDistanceView.setText(_decimalFormater.format(message
+                        .getDistToFace()) + " cm");
 
+                float fontRatio = message.getDistToFace() / 29.7f;
+
+                _currentDistanceView.setTextSize(fontRatio * 20);
+            }
+        });
     }
 
     @Override

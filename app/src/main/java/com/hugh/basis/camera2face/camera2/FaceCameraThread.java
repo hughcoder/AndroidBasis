@@ -22,10 +22,12 @@ public class FaceCameraThread extends Thread {
 	private final byte[] _data;
 	private final Size _previewSize;
 	private Bitmap _currentFrame;
+	private boolean mIsVertical;
 
-	public FaceCameraThread(final byte[] data, final Size previewSize) {
+	public FaceCameraThread(final byte[] data, final Size previewSize,boolean isVertical) {
 		_data = data;
 		_previewSize = previewSize;
+		mIsVertical = isVertical;
 	}
 
 	public Face getCurrentFace() {
@@ -71,8 +73,13 @@ public class FaceCameraThread extends Thread {
 
 		// Rotate the so it siuts our portrait mode
 		Matrix matrix = new Matrix();
-		matrix.postRotate(90);
-		matrix.preScale(-1, 1);  //Android内置人脸识别的图像必须是头在上,所以要做旋转变换
+		if(mIsVertical){
+			matrix.postRotate(90);
+			matrix.preScale(-1, 1);  //Android内置人脸识别的图像必须是头在上,所以要做旋转变换
+			// We rotate the same Bitmap
+			_currentFrame = Bitmap.createBitmap(_currentFrame, 0, 0,
+					_previewSize.getWidth(), _previewSize.getHeight(), matrix, false);
+		}
 		// We rotate the same Bitmap
 		_currentFrame = Bitmap.createBitmap(_currentFrame, 0, 0,
 				_previewSize.getWidth(), _previewSize.getHeight(), matrix, false);

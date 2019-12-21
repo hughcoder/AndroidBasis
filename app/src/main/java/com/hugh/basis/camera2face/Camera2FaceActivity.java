@@ -3,6 +3,7 @@ package com.hugh.basis.camera2face;
 import android.Manifest;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -107,7 +108,7 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
     TextView _currentDistanceView;
     private boolean mIsCalibrated;  //开启距离判断的开关
     private FaceDetector.Face _foundFace = null; //发现找到的人脸
-
+    private boolean mIsVertical = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,6 +176,19 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
         camera2Helper.start();
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if(camera2Helper !=null){
+                mIsVertical = false;
+            }
+        } else {
+            if(camera2Helper !=null){
+                mIsVertical = true;
+            }
+        }
+        super.onConfigurationChanged(newConfig);
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -348,7 +362,7 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
                             }
 
                             _currentFaceDetectionThread = new FaceCameraThread(nv21,
-                                    previewSize); //_previewSize 该手机最适合的长宽
+                                    previewSize,mIsVertical); //_previewSize 该手机最适合的长宽
                             _currentFaceDetectionThread.start();
 
                         } else {
@@ -369,7 +383,7 @@ public class Camera2FaceActivity extends AppCompatActivity implements ViewTreeOb
                                 updateMeasurement(_currentFaceDetectionThread.getCurrentFace());
 
                             _currentFaceDetectionThread = new FaceCameraThread(nv21,
-                                    previewSize); //_previewSize 该手机最适合的长宽
+                                    previewSize,mIsVertical); //_previewSize 该手机最适合的长宽
                             _currentFaceDetectionThread.start();
                         }
                     }

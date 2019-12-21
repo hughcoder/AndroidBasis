@@ -90,6 +90,7 @@
         <activity android:name=".eysshieldv2.testcamera2.TestCamera2" />
         <activity
             android:name=".camera2face.Camera2FaceActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:screenOrientation="sensor"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>

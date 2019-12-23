@@ -80,9 +80,6 @@ public class FaceCameraThread extends Thread {
 			_currentFrame = Bitmap.createBitmap(_currentFrame, 0, 0,
 					_previewSize.getWidth(), _previewSize.getHeight(), matrix, false);
 		}
-		// We rotate the same Bitmap
-		_currentFrame = Bitmap.createBitmap(_currentFrame, 0, 0,
-				_previewSize.getWidth(), _previewSize.getHeight(), matrix, false);
 		Log.e("run","previewSize.width"+_previewSize.getWidth()+"_previewSize.height"+_previewSize.getHeight());
 		Log.i("Timing",
 				"Rotate, Create finished: " + (System.currentTimeMillis() - t));

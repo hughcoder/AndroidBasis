@@ -52,6 +52,7 @@ public class Camera2Helper {
     private boolean isMirror;
     private Context context;
     private boolean mCalibrated;
+    private boolean mIsVertical = true;
     /**
      * A {@link CameraCaptureSession } for camera preview.
      */
@@ -78,6 +79,10 @@ public class Camera2Helper {
         if (isMirror) {
             mTextureView.setScaleX(-1);
         }
+    }
+
+    public void setConfiguration(boolean val){
+        mIsVertical =val;
     }
 
     public void switchCamera() {

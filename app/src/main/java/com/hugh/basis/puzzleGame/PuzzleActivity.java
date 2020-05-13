@@ -5,7 +5,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 
 import com.hugh.basis.R;
 
@@ -28,6 +30,7 @@ public class PuzzleActivity extends AppCompatActivity {
     private ImageView mIv2;
     private ImageView mIv3;
     private ImageView mIv4;
+    private SeekBar mSeekBar;
 
 
     @Override
@@ -35,6 +38,32 @@ public class PuzzleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_puzzle);
         setContentView(R.layout.activity_vdhblog);
+        mSeekBar = findViewById(R.id.seekBar);
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.e("aaa","progress---"+progress);
+               if(progress<=15){
+                   mSeekBar.setProgress(0);
+               }else if(progress<=45){
+                   mSeekBar.setProgress(30);
+               }else if(progress<=60){
+                   mSeekBar.setProgress(60);
+               }else {
+                   mSeekBar.setProgress(100);
+               }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 //        mIv1 = findViewById(R.id.iv_1);
 //        mIv2 = findViewById(R.id.iv_2);
 //        mIv3 = findViewById(R.id.iv_3);

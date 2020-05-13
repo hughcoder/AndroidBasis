@@ -1,8 +1,6 @@
 package com.hugh.basis.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.hugh.basis.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by chenyw on 2019-07-19.

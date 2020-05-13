@@ -1,16 +1,16 @@
 package com.hugh.basis.retrofit;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hugh.basis.R;
 import com.hugh.basis.retrofit.bean.Translation;
 import com.hugh.basis.retrofit.getApi.GetRequest_Interface;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

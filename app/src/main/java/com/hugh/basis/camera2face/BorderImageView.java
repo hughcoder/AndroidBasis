@@ -5,10 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatImageView;
+
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 
 public class BorderImageView extends ImageView {

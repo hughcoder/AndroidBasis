@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.Guideline
         android:id="@+id/module_lightlessonGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
 
 
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.Guideline
         android:id="@+id/module_lightlessonGuideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -154,18 +154,18 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:progress="30" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.Guideline
         android:id="@+id/module_lightlessonGuideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="40dp" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.Guideline
         android:id="@+id/module_lightlessonGuideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="100dp" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.ConstraintLayout>

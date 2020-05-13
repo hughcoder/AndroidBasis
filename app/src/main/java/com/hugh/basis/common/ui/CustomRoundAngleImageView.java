@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.os.Build;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * Created by chenyw on 2019-08-22.

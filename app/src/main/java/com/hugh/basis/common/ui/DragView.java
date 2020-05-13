@@ -1,13 +1,13 @@
 package com.hugh.basis.common.ui;
 
 import android.content.Context;
-import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.AppCompatImageView;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * Created by chenyw on 2019-11-19.

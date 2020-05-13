@@ -17,7 +17,6 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
@@ -30,6 +29,8 @@ import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
+
+import androidx.annotation.NonNull;
 
 
 public class Camera2Helper {
@@ -156,7 +157,8 @@ public class Camera2Helper {
         @Override
         public void onOpened(@NonNull CameraDevice cameraDevice) {
             Log.i(TAG, "onOpened: ");
-            // This method is called when the camera is opened.  We start camera preview here.
+            // This method is called when the camera is opened.  We start came
+            // ra preview here.
             mCameraOpenCloseLock.release();
             mCameraDevice = cameraDevice;
             createCameraPreviewSession();

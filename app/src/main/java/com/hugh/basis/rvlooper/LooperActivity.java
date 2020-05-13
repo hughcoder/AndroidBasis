@@ -1,15 +1,16 @@
 package com.hugh.basis.rvlooper;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 
 import com.hugh.basis.R;
 import com.hugh.basis.rvlooper.bean.GroupBookingEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 /**
  * Created by chenyw on 2019-08-15.

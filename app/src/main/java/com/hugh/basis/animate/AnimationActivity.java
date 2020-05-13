@@ -4,9 +4,6 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -20,6 +17,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.hugh.basis.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by {chenyouwei}

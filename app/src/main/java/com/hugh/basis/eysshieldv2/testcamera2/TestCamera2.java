@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -19,14 +18,13 @@ import android.media.ImageReader;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.TextureView;
 
 import com.hugh.basis.R;
-import com.hugh.basis.eyeshield.FaceDetectionThread;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;

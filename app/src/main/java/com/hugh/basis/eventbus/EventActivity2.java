@@ -1,8 +1,6 @@
 package com.hugh.basis.eventbus;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hugh.basis.R;
@@ -11,6 +9,9 @@ import com.hugh.basis.eventbus.message.MessageEvent;
 import com.hugh.basis.eventbus.message.SuccessEvent;
 
 import org.greenrobot.eventbus.EventBus;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by chenyw on 2019-07-05.

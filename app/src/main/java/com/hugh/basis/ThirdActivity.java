@@ -3,8 +3,9 @@ package com.hugh.basis;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by {chenyouwei}

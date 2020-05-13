@@ -1,13 +1,9 @@
 package com.hugh.basis.dialog;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -20,6 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.hugh.basis.R;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 
 /**
  * Created by chenyw on 2019-07-19.

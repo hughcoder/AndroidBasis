@@ -1,13 +1,14 @@
 package com.hugh.basis.common.ui;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
 import com.hugh.basis.common.utils.ScreenUtil;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * Created by chenyw on 2019-11-19.

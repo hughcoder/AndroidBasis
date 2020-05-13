@@ -1,12 +1,13 @@
 package com.hugh.basis.rvlooper;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import java.lang.ref.WeakReference;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by chenyw on 2019-08-15.

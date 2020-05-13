@@ -2,11 +2,12 @@ package com.hugh.basis.puzzleGame;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.customview.widget.ViewDragHelper;
 
 /**
  * Created by zhy on 15/6/3.

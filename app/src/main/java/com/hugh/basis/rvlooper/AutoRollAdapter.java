@@ -2,7 +2,6 @@ package com.hugh.basis.rvlooper;
 
 import android.graphics.Color;
 import android.os.CountDownTimer;
-import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -21,6 +20,8 @@ import com.hugh.basis.rvlooper.bean.GroupBookingEntity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**

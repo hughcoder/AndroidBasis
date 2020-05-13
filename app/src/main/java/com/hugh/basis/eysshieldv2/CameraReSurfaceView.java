@@ -5,15 +5,14 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.media.FaceDetector;
 import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;

@@ -15,10 +15,11 @@ import android.graphics.YuvImage;
 import android.hardware.camera2.CameraDevice;
 import android.media.FaceDetector;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Size;
@@ -39,10 +40,7 @@ import com.hugh.basis.camera2face.camera2.Camera2Listener;
 import com.hugh.basis.camera2face.camera2.FaceCameraThread;
 import com.hugh.basis.camera2face.util.ImageUtil;
 import com.hugh.basis.eyeshield.messages.MeasurementStepMessage;
-import com.hugh.basis.eyeshield.messages.MessageHUB;
 import com.hugh.basis.eyeshield.utils.Util;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;

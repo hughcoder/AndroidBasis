@@ -4,8 +4,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -13,6 +12,9 @@ import android.widget.Button;
 import android.widget.VideoView;
 
 import com.hugh.basis.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by chenyw on 2019-07-10.

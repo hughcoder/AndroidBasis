@@ -3,8 +3,7 @@ package com.hugh.basis.timer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,6 +14,9 @@ import com.hugh.basis.R;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by chenyw on 2019-07-12.

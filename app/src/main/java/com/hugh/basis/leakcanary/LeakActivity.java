@@ -1,12 +1,14 @@
 package com.hugh.basis.leakcanary;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
 
 import com.hugh.basis.HughApplication;
 import com.hugh.basis.R;
 import com.squareup.leakcanary.RefWatcher;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by chenyw on 2019-09-05.

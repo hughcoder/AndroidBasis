@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -60,6 +59,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;

@@ -2,8 +2,6 @@ package com.hugh.basis.activities;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -13,6 +11,9 @@ import android.view.WindowManager;
 
 import com.hugh.basis.R;
 import com.hugh.basis.dialog.TeenagerTipDialog;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by chenyw on 2019-08-30.

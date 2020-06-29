@@ -50,6 +50,7 @@ import com.hugh.basis.timer.TimerActivity;
 import com.hugh.basis.videoView.VideoViewActivity;
 import com.hugh.basis.viewpager.ViewPagerActivity;
 import com.hugh.basis.webView.WebViewActivity;
+import com.hugh.ffmpeg.CCMainActivity;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 
 
@@ -523,6 +524,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, NoteActivity.class));
             }
         });
+
+        goCCMainActivity();
+    }
+
+    private void goCCMainActivity(){
+        Intent intent = new Intent(this, CCMainActivity.class);
+        startActivity(intent);
     }
 
     /**

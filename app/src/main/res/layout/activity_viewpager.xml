@@ -5,7 +5,7 @@
     android:layout_centerInParent="true"
     android:background="#aadc71ff"
     >
-    <androidx.core.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/id_viewPager"
         android:layout_width="match_parent"
         android:layout_height="120dp"

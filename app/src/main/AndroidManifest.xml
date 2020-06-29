@@ -93,6 +93,10 @@
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:screenOrientation="sensor"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity android:name=".third.greendao.NoteActivity"/>
+
+        <activity android:name="com.hugh.ffmpegaudio.FFmpegActivity"/>
     </application>
 
 

@@ -7,10 +7,14 @@ import android.os.Debug;
 import android.util.Log;
 
 import com.didichuxing.doraemonkit.DoraemonKit;
+import com.hugh.basis.third.greendao.DaoMaster;
+import com.hugh.basis.third.greendao.DaoSession;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.tencent.tinker.loader.app.TinkerApplication;
+
+import org.greenrobot.greendao.database.Database;
 
 /**
  * Created by {chenyouwei}
@@ -20,7 +24,7 @@ public class HughApplication extends Application {
 
     private static final String TAG = HughApplication.class.getSimpleName();
     private RefWatcher refWatcher;
-
+    private DaoSession daoSession;
 
 
     @Override
@@ -31,9 +35,17 @@ public class HughApplication extends Application {
         refWatcher= setupLeakCanary();
         Log.e(TAG, "onCreate : getProcessName:" );
         Log.e(TAG,"isDebug"+isApkInDebug(this));
-
+        initDataBase();
     }
 
+    private void initDataBase(){
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "notes-db");
+        Database db = helper.getWritableDb();
+        daoSession = new DaoMaster(db).newSession();
+    }
+    public DaoSession getDaoSession() {
+        return daoSession;
+    }
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);

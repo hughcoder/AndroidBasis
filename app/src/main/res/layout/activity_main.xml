@@ -246,6 +246,10 @@
             android:text="去线程相关页面"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
+        <Button
+            android:id="@+id/tv_go_greendao"
+            android:text="去数据库页面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

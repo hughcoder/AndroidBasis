@@ -44,6 +44,7 @@ import com.hugh.basis.record.RecordActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.rvlooper.LooperActivity;
 import com.hugh.basis.services.TestOneService;
+import com.hugh.basis.third.greendao.NoteActivity;
 import com.hugh.basis.thread.ThreadTestAcitivity;
 import com.hugh.basis.timer.TimerActivity;
 import com.hugh.basis.videoView.VideoViewActivity;
@@ -513,6 +514,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Camera2FaceActivity.class));
+            }
+        });
+
+        findViewById(R.id.tv_go_greendao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NoteActivity.class));
             }
         });
     }

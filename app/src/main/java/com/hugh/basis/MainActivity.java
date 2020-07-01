@@ -525,6 +525,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_goto_ffmpeg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goCCMainActivity();
+            }
+        });
         goCCMainActivity();
     }
 

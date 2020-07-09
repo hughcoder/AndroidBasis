@@ -26,6 +26,7 @@ public class CCMainActivity extends AppCompatActivity {
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
+        System.loadLibrary("ffmpeg_lib");
     }
 
     @Override
@@ -61,6 +62,8 @@ public class CCMainActivity extends AppCompatActivity {
             NostaticRef();
         }
 
+        Log.e("aaa","getFFmpegVersion"+getFFmpegVersion());
+
 
 
 
@@ -69,6 +72,8 @@ public class CCMainActivity extends AppCompatActivity {
     public int getIntValue(){
         return 1;
     }
+
+    public native String getFFmpegVersion();
 
     public native String stringFromJNI();
     //返回静态字符串

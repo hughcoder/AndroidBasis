@@ -8,7 +8,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     static {
-        System.loadLibrary("ffmpeg_lib");
+        System.loadLibrary("native-lib");
     }
 
     @Override

@@ -63,7 +63,7 @@ Java_com_hugh_ffmpeg_CCMainActivity_handleMethod(JNIEnv *env, jobject jobj) {
     jmethodID jmid = env->GetMethodID(jcla, "getIntValue", "()I");
     //调用java方法获取返回值，第四个参数100表示传入到java方法中的值
     jint jRandom = env->CallIntMethod(jobj, jmid);
-    //可以在Android Studio中Logcat显示，需要定义头文件#include <android/log.h>
+    //可以在Android Studio中Logcat显示，需要定义头文件#ffmpeg.include <android/log.h>
     __android_log_print(ANDROID_LOG_DEBUG, "system.out", "getIntValue：%ld", jRandom);
 }
 
@@ -76,7 +76,7 @@ Java_com_hugh_ffmpeg_CCMainActivity_handleStaticMethod(JNIEnv *env, jobject jobj
     jmethodID jmid = env->GetStaticMethodID(jcla, "getStaticStr", "()Ljava/lang/String;");
     //调用java方法获取返回值，第四个参数100表示传入到java方法中的值
     jstring jstring1 = (jstring)env->CallStaticObjectMethod(jcla, jmid);
-    //可以在Android Studio中Logcat显示，需要定义头文件#include <android/log.h>
+    //可以在Android Studio中Logcat显示，需要定义头文件#ffmpeg.include <android/log.h>
     __android_log_print(ANDROID_LOG_DEBUG, "system.out", "getStaticStr：%ld", jstring1);
 }
 

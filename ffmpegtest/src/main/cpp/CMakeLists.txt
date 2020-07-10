@@ -1,38 +1,104 @@
-#指定 Cmake 最低版本
 cmake_minimum_required(VERSION 3.4.1)
 
-#找到包含所有的cpp文件
-file(GLOB allCpp *.cpp)
+# 设置生成的so动态库最后输出的路径
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
 
-#打印当前 cmakeLists 的路径
-message("当前cmakel路径: ${CMAKE_SOURCE_DIR} \n cpu架构：${CMAKE_ANDROID_ARCH_ABI}")
+# 支持C++11标准和GNU扩展特性
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
-add_library(
-        ffmpeg_lib
+# 1. 定义so库和头文件所在目录，方面后面使用
+set(ffmpeg_lib_dir ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
+set(ffmpeg_head_dir ${CMAKE_SOURCE_DIR}/ffmpeg)
 
+message("当前cmakel路径: ${ffmpeg_lib_dir}")
+
+# 2. 添加头文件目录
+include_directories(${ffmpeg_head_dir}/include)
+
+# 3. 添加ffmpeg相关的so库
+add_library( avutil
         SHARED
+        IMPORTED )
+set_target_properties( avutil
+        PROPERTIES IMPORTED_LOCATION
+        ${ffmpeg_lib_dir}/libavutil.so )
 
-        ${allCpp})
+add_library( swresample
+        SHARED
+        IMPORTED )
+set_target_properties( swresample
+        PROPERTIES IMPORTED_LOCATION
+        ${ffmpeg_lib_dir}/libswresample.so )
 
-find_library(
+add_library( avcodec
+        SHARED
+        IMPORTED )
+set_target_properties( avcodec
+        PROPERTIES IMPORTED_LOCATION
+        ${ffmpeg_lib_dir}/libavcodec.so )
+
+add_library( avfilter
+        SHARED
+        IMPORTED)
+set_target_properties( avfilter
+        PROPERTIES IMPORTED_LOCATION
+        ${ffmpeg_lib_dir}/libavfilter.so )
+
+add_library( swscale
+        SHARED
+        IMPORTED)
+set_target_properties( swscale
+        PROPERTIES IMPORTED_LOCATION
+        ${ffmpeg_lib_dir}/libswscale.so )
+
+add_library( avformat
+        SHARED
+        IMPORTED)
+set_target_properties( avformat
+        PROPERTIES IMPORTED_LOCATION
+        ${ffmpeg_lib_dir}/libavformat.so )
+
+add_library( avdevice
+        SHARED
+        IMPORTED)
+set_target_properties( avdevice
+        PROPERTIES IMPORTED_LOCATION
+        ${ffmpeg_lib_dir}/libavdevice.so )
+
+# 查找代码中使用到的系统库
+find_library( # Sets the name of the path variable.
         log-lib
 
-        log)
+        # Specifies the name of the NDK library that
+        # you want CMake to locate.
+        log )
 
-# 引入FFmpeg的头文件
-include_directories(${CMAKE_SOURCE_DIR}/include)
+# 配置目标so库编译信息
+add_library( # Sets the name of the library.
+        native-lib
 
-# 引入FFmpeg的库文件，设置内部的方式引入，指定库的目录是 -L  指定具体的库-l
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/${CMAKE_ANDROID_ARCH_ABI}")
+        # Sets the library as a shared library.
+        SHARED
 
+        # Provides a relative path to your source file(s).
+        ffmpeg_lib.cpp
+
+        )
+
+# 指定编译目标库时，cmake要链接的库
 target_link_libraries(
-        ffmpeg_lib
 
-        # 具体的库文件，链接到总库
-        # 这样写会报错，有坑
-        # avcodec avfilter avformat avutil swresample swscale
+        # 指定目标库，native-lib 是在上面 add_library 中配置的目标库
+        native-lib
 
-        # 先把有依赖的库，先依赖进来
-        avformat avcodec avfilter avutil swresample swscale
+        # 4. 连接 FFmpeg 相关的库
+        avutil
+        swresample
+        avcodec
+        avfilter
+        swscale
+        avformat
 
-        ${log-lib})
+        # Links the target library to the log library
+        # included in the NDK.
+        ${log-lib} )

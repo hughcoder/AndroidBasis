@@ -1,15 +1,10 @@
-//
-// Created by 阳坤 on 2020-01-15.
-//
-
-
 #include <jni.h>
 
-// 有坑，会报错，必须混合编译
-//#include <libavutil/avutil.h>
-
 extern "C" {
-#include <libavutil/avutil.h>
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+#include <libavfilter/avfilter.h>
+#include <libavcodec/jni.h>
 }
 
 

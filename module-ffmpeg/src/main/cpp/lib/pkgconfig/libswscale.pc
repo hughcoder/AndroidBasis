@@ -1,7 +1,7 @@
 prefix=/Users/zhangxiaoxi/ffmpeg-4.2.2/android/armv7a
 exec_prefix=${prefix}
 libdir=/Users/zhangxiaoxi/ffmpeg-4.2.2/android/armv7a/lib
-includedir=/Users/zhangxiaoxi/ffmpeg-4.2.2/android/armv7a/include
+includedir=/Users/zhangxiaoxi/ffmpeg-4.2.2/android/armv7a/ffmpeg.include
 
 Name: libswscale
 Description: FFmpeg image rescaling library

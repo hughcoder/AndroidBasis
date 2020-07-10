@@ -1,7 +1,7 @@
 #include <jni.h>
 
 // 有坑，会报错，必须混合编译
-//#include <libavutil/avutil.h>
+//#ffmpeg.include <libavutil/avutil.h>
 
 extern "C" {
 #include <libavutil/avutil.h>

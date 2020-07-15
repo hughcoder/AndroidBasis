@@ -531,7 +531,7 @@ public class MainActivity extends AppCompatActivity {
                 goCCMainActivity();
             }
         });
-        goCCMainActivity();
+//        goCCMainActivity();
     }
 
     private void goCCMainActivity(){

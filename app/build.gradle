@@ -103,4 +103,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:2.1.12"
 
     implementation 'org.greenrobot:greendao:3.3.0' // add library
+
+    implementation "com.zhl.commonadapter:commonadapter:0.4.0"
+
+
 }

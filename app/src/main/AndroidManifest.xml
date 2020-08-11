@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".home.HomeActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop">
             <intent-filter>
@@ -29,6 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".home.homeSub.HomeSubActivity" />
         <!--顺便加上这个服务，tinker自带的-->
         <service android:name="com.tencent.tinker.lib.service.DefaultTinkerResultService" />
 

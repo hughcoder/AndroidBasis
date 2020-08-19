@@ -1,6 +1,7 @@
 package com.hugh.basis;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -28,6 +29,7 @@ import com.hugh.basis.animate.AnimationActivity;
 import com.hugh.basis.binder.UserManager;
 import com.hugh.basis.camera2face.Camera2FaceActivity;
 import com.hugh.basis.constraintlayout.ConstraintLayoutActivity;
+import com.hugh.basis.coordinatorLayoutPage.FoldActivity;
 import com.hugh.basis.dialog.DialogShowActivity;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.exoplayer.ExoPlayerActivity;
@@ -86,12 +88,14 @@ public class MainActivity extends AppCompatActivity {
     private int ppp;
     private TextView mTvMsg;
     private TextView show;
+    private Activity mActivity;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.e(TAG, "--- onSaveInstanceState");
         outState.putString("extra_test", "test");
+        mActivity = MainActivity.this;
     }
 
     @Override
@@ -532,9 +536,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //        goCCMainActivity();
+
+        findViewById(R.id.tv_go_fold).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FoldActivity.class));
+            }
+        });
     }
 
-    private void goCCMainActivity(){
+    private void goCCMainActivity() {
         Intent intent = new Intent(this, CCMainActivity.class);
         startActivity(intent);
     }

@@ -53,8 +53,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //-------------- androidx --------------
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.percentlayout:percentlayout:1.0.0"
+    implementation "androidx.core:core:1.2.0"
+    implementation 'com.google.android.material:material:1.0.0'
+
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
@@ -80,10 +91,10 @@ dependencies {
     implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.8'
     implementation 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
 
-  // ExoPlayer as IMediaPlayer: optional, experimental
+    // ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
     implementation 'androidx.cardview:cardview:1.0.0'
-  // 滴滴调试工具
+    // 滴滴调试工具
     debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:1.2.1'
     releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.2.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
@@ -105,6 +116,8 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.3.0' // add library
 
     implementation "com.zhl.commonadapter:commonadapter:0.4.0"
+    //指示器
+    implementation "com.github.hackware1993:MagicIndicator:1.5.0"
 
 
 }

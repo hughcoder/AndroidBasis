@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.hardware.camera.autofocus" />
 
@@ -96,9 +97,9 @@
             android:screenOrientation="sensor"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
-        <activity android:name=".third.greendao.NoteActivity"/>
-
-        <activity android:name="com.hugh.ffmpegaudio.FFmpegActivity"/>
+        <activity android:name=".third.greendao.NoteActivity" />
+        <activity android:name=".coordinatorLayoutPage.FoldActivity" />
+        <activity android:name="com.hugh.ffmpegaudio.FFmpegActivity" />
     </application>
 
 

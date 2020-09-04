@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android</string>
+    <string name="app_name">AndroidFun</string>
     <!--     Button / Field names -->
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>

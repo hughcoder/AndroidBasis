@@ -115,5 +115,26 @@
                 android:flipInterval="30"
                 android:persistentDrawingCache="animation" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_float_ad"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center|end"
+            android:src="@android:drawable/ic_dialog_email"
+            app:layout_behavior=".coordinatorLayoutPage.behavior.ViewRightInOutBehavior"
+            tools:background="@color/c6"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/float_dub"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@android:drawable/ic_dialog_info"
+            app:layout_behavior=".coordinatorLayoutPage.behavior.ViewBottomInOutBehavior"
+            tools:visibility="visible" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>

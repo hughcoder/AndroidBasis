@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.hugh.basis.R;
 import com.hugh.basis.coordinatorLayoutPage.bean.SinglePicEntity;
@@ -27,19 +29,19 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FoldListFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private LinearLayout mLayoutTab;
+    private int tabHeight;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_fold_list, null);
         recyclerView = view.findViewById(R.id.rv_list);
-        mLayoutTab = view.findViewById(R.id.layout_tab);
 
         ArrayList<SinglePicEntity> list = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 20; i++) {
             list.add(new SinglePicEntity());
         }
+
 
         CommonRecyclerAdapter<SinglePicEntity> adapter = new CommonRecyclerAdapter<SinglePicEntity>(list) {
             @Override
@@ -50,6 +52,7 @@ public class FoldListFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        int totaldy = 0;
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -60,20 +63,6 @@ public class FoldListFragment extends Fragment {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 //控制上方tab栏隐藏显示
-
-                Log.e("aaa", "dx:" + dx + "---dy:" + dy);
-
-                //上滑隐藏
-                if (dy > 1) {
-                    if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_SETTLING && mLayoutTab.getVisibility() == View.VISIBLE) {
-                        mLayoutTab.setVisibility(View.GONE);
-                    }
-                    //下滑显示
-                } else if (dy < -1) {
-                    if (recyclerView.getScrollState() != RecyclerView.SCROLL_STATE_SETTLING && mLayoutTab.getVisibility() == View.GONE) {
-                        mLayoutTab.setVisibility(View.VISIBLE);
-                    }
-                }
             }
         });
 

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.hugh.basis.MainActivity;
 import com.hugh.basis.R;
+import com.hugh.basis.coordinatorLayoutPage.FoldActivity;
 import com.hugh.basis.home.homeSub.HomeSubActivity;
 import com.hugh.basis.home.model.HomeTabEntity;
 import com.hugh.basis.home.vh.SingleHomeTabVH;
@@ -59,7 +60,10 @@ public class HomeActivity extends Activity {
         mRvList.setAdapter(mAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(HomeActivity.this, 3);
         mRvList.setLayoutManager(gridLayoutManager);
+    }
 
+    private void goTest(){
+        startActivity(new Intent(HomeActivity.this, FoldActivity.class));
     }
 
     private void iniData() {

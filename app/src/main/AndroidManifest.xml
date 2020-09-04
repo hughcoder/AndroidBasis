@@ -98,7 +98,9 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <activity android:name=".third.greendao.NoteActivity" />
-        <activity android:name=".coordinatorLayoutPage.FoldActivity" />
+        <activity
+            android:name=".coordinatorLayoutPage.FoldActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.hugh.ffmpegaudio.FFmpegActivity" />
     </application>
 

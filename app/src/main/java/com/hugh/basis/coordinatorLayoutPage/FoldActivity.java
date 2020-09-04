@@ -1,12 +1,9 @@
 package com.hugh.basis.coordinatorLayoutPage;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.hugh.basis.R;
 import com.hugh.basis.coordinatorLayoutPage.bean.HomeTabEntity;
@@ -29,8 +26,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.ListFragment;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 /**
@@ -47,7 +42,7 @@ public class FoldActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fold_titlebar);
+        setContentView(R.layout.activity_fold_main);
         mViewPager = findViewById(R.id.viewPager);
         mMagicIndicator = findViewById(R.id.magic_indicator1);
         mFragments.clear();
@@ -106,10 +101,12 @@ public class FoldActivity extends AppCompatActivity {
     }
 
     private void addData() {
-
-        mTabNames.add(new HomeTabEntity("标题1111"));
+        mTabNames.add(new HomeTabEntity("标题1"));
+        mTabNames.add(new HomeTabEntity("标题2333"));
         FoldListFragment listFragment = new FoldListFragment();
+        FoldListFragment list2Fragment = new FoldListFragment();
         mFragments.add(listFragment);
+        mFragments.add(list2Fragment);
         mCommonNavigator.notifyDataSetChanged();
         mFragmentadapter.notifyDataSetChanged();
     }

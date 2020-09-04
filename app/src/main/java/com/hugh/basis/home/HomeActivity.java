@@ -72,7 +72,7 @@ public class HomeActivity extends Activity {
         HomeTabEntity tab2 = new HomeTabEntity("img1", "Android第三方库测试", 2);
         HomeTabEntity tab4 = new HomeTabEntity("img1", "音视频相关", 3);
         HomeTabEntity tab5 = new HomeTabEntity("img1", "Android功能测试", 4);
-        HomeTabEntity tab6 = new HomeTabEntity("img1", "老的汇总页面", 5);
+        HomeTabEntity tab6 = new HomeTabEntity("img1", "找不到东西来这汇总页面", 5);
         mHomeTabEntityList.add(tab1);
         mHomeTabEntityList.add(tab2);
         mHomeTabEntityList.add(tab4);

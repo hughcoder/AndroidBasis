@@ -32,7 +32,6 @@ import com.hugh.basis.thread.ThreadTestAcitivity;
 import com.hugh.basis.timer.TimerActivity;
 import com.hugh.basis.videoView.VideoViewActivity;
 import com.hugh.basis.webView.WebViewActivity;
-import com.hugh.ffmpeg.CCMainActivity;
 import com.zhl.commonadapter.BaseViewHolder;
 import com.zhl.commonadapter.CommonRecyclerAdapter;
 

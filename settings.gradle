@@ -1,3 +1,1 @@
 include ':app', ':apm'
-include ':module-ffmpeg'
-include ':ffmpegtest'

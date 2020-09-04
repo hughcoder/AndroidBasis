@@ -52,7 +52,6 @@ import com.hugh.basis.timer.TimerActivity;
 import com.hugh.basis.videoView.VideoViewActivity;
 import com.hugh.basis.viewpager.ViewPagerActivity;
 import com.hugh.basis.webView.WebViewActivity;
-import com.hugh.ffmpeg.CCMainActivity;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 
 
@@ -532,7 +531,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_goto_ffmpeg).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goCCMainActivity();
+  
             }
         });
 //        goCCMainActivity();
@@ -545,10 +544,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void goCCMainActivity() {
-        Intent intent = new Intent(this, CCMainActivity.class);
-        startActivity(intent);
-    }
+
 
     /**
      * 判断当前应用是否是debug状态

@@ -8,6 +8,10 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.os.Environment;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.MessageQueue;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -42,6 +46,7 @@ import com.hugh.basis.hook.HookTestActivity;
 import com.hugh.basis.ijkplayer.PlayActivity;
 import com.hugh.basis.leakcanary.LeakActivity;
 import com.hugh.basis.puzzleGame.PuzzleActivity;
+import com.hugh.basis.qrcode.QrCodeActivity;
 import com.hugh.basis.record.RecordActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.rvlooper.LooperActivity;
@@ -531,7 +536,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_goto_ffmpeg).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-  
+
             }
         });
 //        goCCMainActivity();
@@ -542,8 +547,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, FoldActivity.class));
             }
         });
-    }
 
+
+        findViewById(R.id.tv_go_qr_code).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, QrCodeActivity.class));
+            }
+        });
+//        MessageQueue.IdleHandler ideHandler =new MessageQueue.IdleHandler() {
+//            @Override
+//            public boolean queueIdle() {
+//                return false;
+//            }
+//        };
+//
+//        Looper.myQueue().addIdleHandler(ideHandler);
+
+//        HandlerThread handlerThread = new HandlerThread("A-Thread");
+//        handlerThread.start();
+//        Handler handler = new Handler(handlerThread.getLooper());
+
+
+
+    }
 
 
     /**

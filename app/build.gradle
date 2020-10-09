@@ -117,5 +117,8 @@ dependencies {
     //指示器
     implementation "com.github.hackware1993:MagicIndicator:1.5.0"
 
+    //二维码
+    implementation 'com.google.zxing:core: 3.3.0'
+
 
 }

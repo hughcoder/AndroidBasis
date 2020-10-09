@@ -261,5 +261,10 @@
             android:text="去CoordinatorLayout折叠布局"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/tv_go_qr_code"
+            android:text="去二维码页面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

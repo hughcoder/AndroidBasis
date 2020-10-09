@@ -102,6 +102,7 @@
             android:name=".coordinatorLayoutPage.FoldActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.hugh.ffmpegaudio.FFmpegActivity" />
+        <activity android:name=".qrcode.QrCodeActivity"/>
     </application>
 
 

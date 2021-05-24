@@ -60,6 +60,9 @@ public class HomeActivity extends Activity {
         mRvList.setAdapter(mAdapter);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(HomeActivity.this, 3);
         mRvList.setLayoutManager(gridLayoutManager);
+
+        //
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private void goTest(){

@@ -103,6 +103,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name="com.hugh.ffmpegaudio.FFmpegActivity" />
         <activity android:name=".qrcode.QrCodeActivity"/>
+        <activity android:name=".scrolltest.ScrollTestActivity"/>
+        <activity android:name=".scrolltest.test2.ScrollTest2Activity"/>
     </application>
 
 

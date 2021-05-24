@@ -8,10 +8,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.os.Environment;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.MessageQueue;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -38,8 +34,6 @@ import com.hugh.basis.dialog.DialogShowActivity;
 import com.hugh.basis.eventbus.EventActivity1;
 import com.hugh.basis.exoplayer.ExoPlayerActivity;
 import com.hugh.basis.eyeshield.EyeProtectActivity;
-import com.hugh.basis.eysshieldv2.EyeProtectReActivity;
-import com.hugh.basis.eysshieldv2.testcamera2.TestCamera2;
 import com.hugh.basis.footer.HeaderAndFooterActivity;
 import com.hugh.basis.highOrderUI.UiActivity;
 import com.hugh.basis.hook.HookTestActivity;
@@ -50,6 +44,8 @@ import com.hugh.basis.qrcode.QrCodeActivity;
 import com.hugh.basis.record.RecordActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.rvlooper.LooperActivity;
+import com.hugh.basis.scrolltest.ScrollTestActivity;
+import com.hugh.basis.scrolltest.test2.ScrollTest2Activity;
 import com.hugh.basis.services.TestOneService;
 import com.hugh.basis.third.greendao.NoteActivity;
 import com.hugh.basis.thread.ThreadTestAcitivity;
@@ -568,8 +564,19 @@ public class MainActivity extends AppCompatActivity {
 //        handlerThread.start();
 //        Handler handler = new Handler(handlerThread.getLooper());
 
+        findViewById(R.id.btn_goto_scroll).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ScrollTestActivity.class));
+            }
+        });
 
-
+        findViewById(R.id.btn_goto_scroll2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ScrollTest2Activity.class));
+            }
+        });
     }
 
 

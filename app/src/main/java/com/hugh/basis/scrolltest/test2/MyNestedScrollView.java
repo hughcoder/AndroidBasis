@@ -2,10 +2,13 @@ package com.hugh.basis.scrolltest.test2;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.hardware.SensorManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.OverScroller;
 
 import com.hugh.basis.common.utils.ScreenUtil;
 
@@ -24,6 +27,15 @@ public class MyNestedScrollView extends NestedScrollView {
     private View mContentView;
     private int mTopTitleHeight = ScreenUtil.dip2px(getContext(), 50);
     private RecyclerView mLinkRvView;
+    private static final float INFLEXION = 0.35f;
+    private float mFlingFriction = ViewConfiguration.getScrollFriction();
+    final float ppi = getContext().getResources().getDisplayMetrics().density * 160.0f;
+    private float mPhysicalCoeff = SensorManager.GRAVITY_EARTH // g (m/s^2)
+                    * 39.37f // inch/meter
+                            * ppi
+                    * 0.84f;
+    private static float DECELERATION_RATE = (float) (Math.log(0.78) / Math.log(0.9));
+
 
     public MyNestedScrollView(@NonNull Context context) {
         super(context);
@@ -39,25 +51,64 @@ public class MyNestedScrollView extends NestedScrollView {
     }
 
     public void setBottomContentView(View contentView){
-        Log.e("aaa","setBottomContentView");
+        Log.e("ccc","1");
         mContentView = contentView;
     }
 
     public void setRvLinkView(RecyclerView recyclerView){
-        Log.e("aaa","setBottomView");
         mLinkRvView = recyclerView;
     }
 
     @Override
     public boolean onNestedPreFling(@NonNull View target, float velocityX, float velocityY) {
-        Log.e("aaa","onNestedPreFling---->y"+velocityY);
+        Log.e("ccc","onNestedPreFling---->y"+velocityY);
         return false;
     }
 
     @Override
     public boolean onNestedFling(@NonNull View target, float velocityX, float velocityY, boolean consumed) {
-        Log.e("aaa","onNestedFling---->y"+velocityY);
         return false;
+    }
+
+    private double getSplineFlingDistance(int velocity) {
+        final double l = getSplineDeceleration(velocity);
+        final double decelMinusOne = DECELERATION_RATE - 1.0;
+        return mFlingFriction * mPhysicalCoeff * Math.exp(DECELERATION_RATE / decelMinusOne * l);
+    }
+
+    private double getSplineDeceleration(int velocity) {
+        return Math.log(INFLEXION * Math.abs(velocity) / (mFlingFriction * mPhysicalCoeff));
+    }
+
+
+    @Override
+    public boolean dispatchNestedFling(float velocityX, float velocityY, boolean consumed) {
+        Log.e("ccc","dispatchNestedFling vy2---->"+velocityY+"--consumed-->"+consumed);
+        if(consumed&&mLinkRvView!=null&&velocityY>0){ //velocityY>0代表向下滑动
+            Log.e("ccc","距离----->"+(int) getSplineFlingDistance((int) velocityY));
+            mLinkRvView.smoothScrollBy(0, (int) getSplineFlingDistance((int) velocityY));
+        }
+        return super.dispatchNestedFling(velocityX, velocityY, consumed);
+    }
+
+
+    @Override
+    public boolean onStartNestedScroll(@NonNull View child, @NonNull View target, int axes, int type) {
+        Log.e("ccc","onStartNestedScroll---axes-->"+axes+"-type----->"+type);
+        return super.onStartNestedScroll(child, target, axes, type);
+    }
+
+
+    @Override
+    public void onStopNestedScroll(@NonNull View target) {
+        Log.e("ccc","onStopNestedScroll---->111");
+        super.onStopNestedScroll(target);
+    }
+
+    @Override
+    public void onStopNestedScroll(@NonNull View target, int type) {
+        Log.e("ccc","onStopNestedScroll---->222");
+        super.onStopNestedScroll(target, type);
     }
 
     @Override

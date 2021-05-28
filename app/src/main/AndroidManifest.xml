@@ -105,6 +105,7 @@
         <activity android:name=".qrcode.QrCodeActivity"/>
         <activity android:name=".scrolltest.ScrollTestActivity"/>
         <activity android:name=".scrolltest.test2.ScrollTest2Activity"/>
+        <activity android:name=".scrolltest.scroll3.ScrollTest3Activity"/>
     </application>
 
 

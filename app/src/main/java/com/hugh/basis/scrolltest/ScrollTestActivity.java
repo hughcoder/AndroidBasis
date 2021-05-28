@@ -1,7 +1,10 @@
 package com.hugh.basis.scrolltest;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,8 +30,10 @@ public class ScrollTestActivity extends Activity {
     private List<String> mRightDatas;
     private RecyclerView mRvLeft;
     private RecyclerView mRvRight;
-    private MyNestedScrollView nestedScrollView;
+    private NestedScrollView nestedScrollView;
     private TextView mTvTextTop;
+    private TextView mTvTextTilte;
+    private LinearLayout mLayoutContent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +47,22 @@ public class ScrollTestActivity extends Activity {
         LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTvTextTop.getLayoutParams();
         lp.height = ScreenUtil.dip2px(this,200);
         mTvTextTop.setLayoutParams(lp);
+
+        mTvTextTilte = findViewById(R.id.tv_title);
+        mLayoutContent = findViewById(R.id.layout_content);
+        mLayoutContent.post(new Runnable() {
+            @Override
+            public void run() {
+                Rect rectangle= new Rect();
+                getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
+                ViewGroup.LayoutParams layoutParams = mLayoutContent.getLayoutParams();
+                layoutParams.height = ScreenUtil.getScreenHeight(ScrollTestActivity.this) - mTvTextTilte.getMeasuredHeight()-rectangle.top;
+                Log.e("aaa","----->"+mTvTextTilte.getMeasuredHeight());
+                Log.e("aaa","statusbar1------>"+rectangle.top);
+                mLayoutContent.setLayoutParams(layoutParams);
+            }
+        });
+        Log.e("aaa","gggg----->");
         initRv();
     }
 

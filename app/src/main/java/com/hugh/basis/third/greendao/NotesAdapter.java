@@ -1,5 +1,6 @@
 package com.hugh.basis.third.greendao;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     @NonNull
     @Override
     public NotesAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.e("aaa"," onCreateViewHolder viewType---->"+viewType);
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_note, parent, false);
         return new NoteViewHolder(view, clickListener);
@@ -63,6 +65,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
     @Override
     public void onBindViewHolder(NotesAdapter.NoteViewHolder holder, int position) {
+        Log.e("aaa"," onBindViewHolder position---->"+position);
         Note note = dataset.get(position);
         holder.text.setText(note.getText());
         holder.comment.setText(note.getComment());

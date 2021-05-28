@@ -45,6 +45,7 @@ import com.hugh.basis.record.RecordActivity;
 import com.hugh.basis.retrofit.RetrofitActivity;
 import com.hugh.basis.rvlooper.LooperActivity;
 import com.hugh.basis.scrolltest.ScrollTestActivity;
+import com.hugh.basis.scrolltest.scroll3.ScrollTest3Activity;
 import com.hugh.basis.scrolltest.test2.ScrollTest2Activity;
 import com.hugh.basis.services.TestOneService;
 import com.hugh.basis.third.greendao.NoteActivity;
@@ -567,7 +568,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_goto_scroll).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ScrollTestActivity.class));
+//                startActivity(new Intent(MainActivity.this, ScrollTestActivity.class));
+                startActivity(new Intent(MainActivity.this, ScrollTest3Activity.class));
             }
         });
 

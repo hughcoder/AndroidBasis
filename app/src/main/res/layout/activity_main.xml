@@ -24,12 +24,12 @@
             android:id="@+id/btn_goto_ffmpeg"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="进入JNI世界" />
+            android:text="进入JNI" />
         <Button
             android:id="@+id/btn_goto_scroll"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="进入滑动解决1" />
+            android:text="进入滑动解决1 原来" />
         <Button
             android:id="@+id/btn_goto_scroll2"
             android:layout_width="100dp"

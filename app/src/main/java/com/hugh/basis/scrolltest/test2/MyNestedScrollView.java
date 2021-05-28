@@ -67,6 +67,7 @@ public class MyNestedScrollView extends NestedScrollView {
 
     @Override
     public boolean onNestedFling(@NonNull View target, float velocityX, float velocityY, boolean consumed) {
+        Log.e("ccc","onNestedPreFling---->y"+velocityY+"---consumed--->"+consumed);
         return false;
     }
 
